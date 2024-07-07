@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Николай Иванов](https://up.htmlacademy.ru/nodejs-2/7/user/624885).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Наумов](https://htmlacademy.ru/profile/id99424).
 
 ---
 
