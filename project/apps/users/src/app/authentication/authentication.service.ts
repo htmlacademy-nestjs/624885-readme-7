@@ -45,6 +45,14 @@ export class AuthenticationService {
     }
 
     return existUser;
+  }
 
+  public async getUser(id: string) {
+    const user = this.blogUserRepository.findById(id);
+    if(!user) {
+      throw new NotFoundException(AUTH_USER_NOT_FOUND);
+    }
+
+    return user;
   }
 }
