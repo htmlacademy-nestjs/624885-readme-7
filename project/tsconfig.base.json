@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@project/core": ["libs/shared/core/src/index.ts"],
-      "@project/data-access": ["libs/shared/data-access/src/index.ts"]
+      "@project/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@users/blog-user": ["apps/users/src/app/blog-user/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
