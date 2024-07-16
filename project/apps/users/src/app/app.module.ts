@@ -5,7 +5,11 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { UserConfigModule } from './config/user-config.module';
 
 @Module({
-  imports: [BlogUserModule, AuthenticationModule, UserConfigModule],
+  imports: [
+    BlogUserModule,
+    AuthenticationModule,
+    UserConfigModule
+  ],
   controllers: [],
   providers: [],
 })
