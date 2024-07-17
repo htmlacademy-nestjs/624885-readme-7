@@ -15,10 +15,7 @@ export class AuthenticationService {
 
     @Inject(mongoConfig.KEY)
     private readonly databaseConfig: ConfigType<typeof mongoConfig>
-  ) {
-    console.log(databaseConfig.user);
-    console.log(databaseConfig.db);
-  }
+  ) {}
 
   public async register(dto: CreateUserDto): Promise<BlogUserEntity> {
     const { email, name, password } = dto;
