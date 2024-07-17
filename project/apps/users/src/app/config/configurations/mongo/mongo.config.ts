@@ -9,6 +9,7 @@ export interface MongoConfig {
   db: string;
   user: string;
   password: string;
+  authDB: string;
 }
 
 const validationSchema = Joi.object({
@@ -16,7 +17,8 @@ const validationSchema = Joi.object({
   port: Joi.number().port().default(DEFAULT_MONGO_PORT),
   db: Joi.string().required(),
   user: Joi.string().required(),
-  password: Joi.string().required()
+  password: Joi.string().required(),
+  authDB: Joi.string().required()
 });
 
 function validateConfig(config: MongoConfig) {
@@ -33,7 +35,8 @@ function getConfig(): MongoConfig {
     port: parseInt(process.env.MONGO_PORT || `${DEFAULT_MONGO_PORT}`, 10),
     db: process.env.MONGO_DB,
     user: process.env.MONGO_USER,
-    password: process.env.MONGO_PASSWORD
+    password: process.env.MONGO_PASSWORD,
+    authDB: process.env.MONGO_AUTH_BASE
   };
 
   validateConfig(config);
