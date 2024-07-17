@@ -33,6 +33,7 @@ export abstract class BaseMongoRepository<
     await newEntity.save();
 
     entity.id = newEntity._id.toString();
+    await this.update(entity);
   }
 
   public async deleteById(id: T['id']): Promise<void> {

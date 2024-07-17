@@ -8,6 +8,9 @@ import { AuthUser } from '@project/core';
   timestamps: true
 })
 export class BlogUserModel extends Document implements AuthUser {
+  @Prop()
+  public id: string;
+
   @Prop({required: true})
   public email: string;
 
