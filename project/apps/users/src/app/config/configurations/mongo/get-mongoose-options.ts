@@ -3,19 +3,22 @@ import { MongooseModuleAsyncOptions } from '@nestjs/mongoose';
 
 import { getMongoConnectionString } from '@project/helpers';
 
+interface MongoConfig {
+  user: string;
+  password: string;
+  host: string;
+  port: string;
+  db: string;
+  authDB: string;
+}
+
 export function getMongooseOptions(): MongooseModuleAsyncOptions {
 
   return {
     useFactory: async (config: ConfigService) => {
+      const mongoConfig = config.get<MongoConfig>('mongo');
       return {
-        uri: getMongoConnectionString({
-          user: config.get<string>('mongo.user'),
-          password: config.get<string>('mongo.password'),
-          host: config.get<string>('mongo.host'),
-          port: config.get<string>('mongo.port'),
-          db: config.get<string>('mongo.db'),
-          authDB: config.get<string>('mongo.authDB')
-        })
+        uri: getMongoConnectionString(mongoConfig)
       }
     },
     inject: [ConfigService]
