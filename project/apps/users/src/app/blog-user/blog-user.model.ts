@@ -5,12 +5,11 @@ import { AuthUser } from '@project/core';
 
 @Schema({
   collection: 'users',
-  timestamps: true
+  timestamps: true,
+  toJSON: {virtuals: true},
+  toObject: {virtuals: true}
 })
 export class BlogUserModel extends Document implements AuthUser {
-  @Prop()
-  public id: string;
-
   @Prop({required: true})
   public email: string;
 
