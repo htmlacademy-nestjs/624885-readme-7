@@ -1,15 +1,23 @@
-import { ConflictException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { ConflictException, Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 
 import { AuthUser } from '@project/core';
 import { BlogUserEntity, BlogUserRepository } from '@users/blog-user'
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG } from './authentication.constant';
+import { mongoConfig } from '@users/config';
+import { ConfigType } from '@nestjs/config';
+import { BcryptHasher } from '@project/helpers';
 
 @Injectable()
 export class AuthenticationService {
   constructor(
-    private readonly blogUserRepository: BlogUserRepository
+    private readonly blogUserRepository: BlogUserRepository,
+
+    @Inject(mongoConfig.KEY)
+    private readonly databaseConfig: ConfigType<typeof mongoConfig>,
+
+    private readonly hasher: BcryptHasher,
   ) {}
 
   public async register(dto: CreateUserDto): Promise<BlogUserEntity> {
@@ -27,10 +35,9 @@ export class AuthenticationService {
       throw new ConflictException(AUTH_USER_EXISTS);
     }
 
-    const userEntity = await new BlogUserEntity(blogUser).setPassword(password);
-    this.blogUserRepository.save(userEntity);
-
-    return userEntity;
+    const userEntity = await new BlogUserEntity(blogUser)
+      .setPassword(await this.hasher.hash(password));
+    return this.blogUserRepository.save(userEntity);
   }
 
   public async verifyUser(dto: LoginUserDto) {

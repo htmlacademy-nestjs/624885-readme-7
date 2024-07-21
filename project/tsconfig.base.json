@@ -17,7 +17,10 @@
     "paths": {
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
-      "@users/blog-user": ["apps/users/src/app/blog-user/index.ts"]
+      "@project/helpers": ["libs/shared/helpers/src/index.ts"],
+      "@users/authentication": ["apps/users/src/app/authentication/*"],
+      "@users/blog-user": ["apps/users/src/app/blog-user/index.ts"],
+      "@users/config": ["apps/users/src/app/config/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -3,7 +3,9 @@ import { randomUUID } from 'crypto';
 import { Entity, EntityFactory, StorableEntity } from '@project/core';
 import { Repository } from './repository.interface';
 
-export abstract class BaseMemoryRepository<T extends Entity & StorableEntity<ReturnType<T['toPOJO']>>> implements Repository<T> {
+export abstract class BaseMemoryRepository<
+  T extends Entity & StorableEntity<ReturnType<T['toPOJO']>>
+> implements Repository<T> {
   protected entities: Map<T['id'], ReturnType<T['toPOJO']>> = new Map;
 
   constructor(
@@ -19,12 +21,13 @@ export abstract class BaseMemoryRepository<T extends Entity & StorableEntity<Ret
     return this.entityFactory.create(fountEntity);
   }
 
-  public async save(entity: T): Promise<void> {
+  public async save(entity: T): Promise<T> {
     if(! entity.id) {
       entity.id = randomUUID();
     }
 
     this.entities.set(entity.id, entity.toPOJO());
+    return this.findById(entity.id);
   }
 
   public async deleteById(id: T['id']): Promise<void> {

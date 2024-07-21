@@ -11,7 +11,7 @@ export class LoggedUserRdo {
 
   @ApiProperty({
     description: 'User`s email',
-    example: 'user.mail.local'
+    example: 'user@mail.local'
   })
   @Expose()
   public email: string;
