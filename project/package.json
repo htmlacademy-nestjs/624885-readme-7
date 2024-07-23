@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint src/ --ext .ts",
-    "mongo:start": "docker compose --file ./apps/users/docker-compose.dev.yml --project-name readme-users --env-file ./apps/users/users.env up -d"
+    "mongo:start": "docker compose --file ./apps/users/docker-compose.dev.yml --project-name readme-users --env-file ./apps/users/users.env up -d",
+    "postgres:start": "docker compose --file ./apps/blogs/docker-compose.dev.yml --env-file ./apps/blogs/blogs.env --project-name readme-blogs up -d"
   },
   "private": true,
   "dependencies": {
