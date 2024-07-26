@@ -13,9 +13,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PostType {
+  VIDEO
+  TEXT
+  QUOTE
+  PHOTO
+  LINK
+}
+
+model Post {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @map("updated_at")
+  authorId String @map("author_id")
+  isDraft Boolean @map("is_draft")
+  repostFrom String? @map("repost_from")
+  type PostType
+  tags Tag[]
+  @@map("posts")
+}
+
 model Tag {
   id  String @id @default(uuid())
   title String
+  posts Post[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @map("updated_at")
   @@map("tags")
