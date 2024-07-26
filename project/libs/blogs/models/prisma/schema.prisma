@@ -30,6 +30,7 @@ model Post {
   repostFrom String? @map("repost_from")
   type PostType
   tags Tag[]
+  comments Comment[]
   @@map("posts")
 }
 
@@ -40,4 +41,15 @@ model Tag {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @map("updated_at")
   @@map("tags")
+}
+
+model Comment {
+  id String @id @default(uuid())
+  text String
+  authorId String @map("author_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @map("updated_at")
+  postId String @map("post_id")
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  @@map("comments")
 }
