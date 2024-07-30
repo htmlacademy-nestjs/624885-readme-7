@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "../../../../node_modules/.prisma/client"
+  output   = "../../../../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -23,43 +23,99 @@ enum PostType {
 }
 
 model Post {
-  id String @id @default(uuid())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @map("updated_at")
-  authorId String @map("author_id")
-  isDraft Boolean @map("is_draft")
-  repostFrom String? @map("repost_from")
-  type PostType
-  tags Tag[]
-  comments Comment[]
-  likes Like[]
+  id         String     @id @default(uuid())
+  createdAt  DateTime   @default(now()) @map("created_at")
+  updatedAt  DateTime   @map("updated_at")
+  authorId   String     @map("author_id")
+  isDraft    Boolean    @map("is_draft")
+  repostFrom String?    @map("repost_from")
+  type       PostType
+  tags       Tag[]
+  comments   Comment[]
+  likes      Like[]
+  videoPost  VideoPost?
+  textPost   TextPost?
+  quotePost  QuotePost?
+  photoPost  PhotoPost?
+  linkPost   LinkPost?
+
   @@map("posts")
 }
 
+model VideoPost {
+  id     String @id @default(uuid())
+  title  String
+  link   String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String @unique
+
+  @@map("video_post")
+}
+
+model TextPost {
+  id       String @id @default(uuid())
+  title    String
+  announce String
+  text     String
+  post     Post   @relation(fields: [postId], references: [id])
+  postId   String @unique
+
+  @@map("text_post")
+}
+
+model QuotePost {
+  id     String @id @default(uuid())
+  text   String
+  author String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String @unique
+
+  @@map("quote_post")
+}
+
+model PhotoPost {
+  id     String @id @default(uuid())
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String @unique
+
+  @@map("photo_post")
+}
+
+model LinkPost {
+  id          String  @id @default(uuid())
+  link        String
+  description String?
+  post        Post    @relation(fields: [postId], references: [id])
+  postId      String  @unique
+}
+
 model Tag {
-  id  String @id @default(uuid())
-  title String
-  posts Post[]
+  id        String   @id @default(uuid())
+  title     String
+  posts     Post[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @map("updated_at")
+
   @@map("tags")
 }
 
 model Comment {
-  id String @id @default(uuid())
-  text String
-  authorId String @map("author_id")
+  id        String   @id @default(uuid())
+  text      String
+  authorId  String   @map("author_id")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @map("updated_at")
-  postId String @map("post_id")
-  post Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  postId    String   @map("post_id")
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
   @@map("comments")
 }
 
 model Like {
-  id String @id @default(uuid())
+  id     String @id @default(uuid())
   userId String @map("user_id")
   postId String @map("post_id")
-  post Post @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
   @@map("likes")
 }
