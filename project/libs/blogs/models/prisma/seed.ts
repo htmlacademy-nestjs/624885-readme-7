@@ -25,27 +25,6 @@ function getTags() {
   ]
 }
 
-function getComments() {
-  return [
-    {
-      id: FIRST_COMMENT_UUID,
-      text: 'This is great!!!',
-      authorId: FIRST_USER_ID,
-      post: {
-        connect: { id: SECOND_POST_UUID }
-      }
-    },
-    {
-      id: SECOND_COMMENT_UUID,
-      text: 'Cool stuff',
-      authorId: SECOND_USER_ID,
-      post: {
-        connect: { id: FIRST_POST_UUID }
-      }
-    }
-  ]
-}
-
 function getPosts() {
   return [
     {
@@ -57,13 +36,7 @@ function getPosts() {
         connect: [
           { id: FIRST_TAG_UUID }
         ]
-      },
-      comments: {
-        connect: [
-          { id: SECOND_COMMENT_UUID }
-        ]
-      },
-      likes: undefined
+      }
     },
     {
       id: SECOND_POST_UUID,
@@ -76,19 +49,24 @@ function getPosts() {
           { id: SECOND_TAG_UUID }
         ]
       },
-      comments: {
-        connect: [
-          { id: FIRST_COMMENT_UUID }
-        ]
-      },
-      likes: undefined
+      comments: [
+        {
+          id: FIRST_COMMENT_UUID,
+          text: 'This is great!!!',
+          authorId: FIRST_USER_ID,
+        },
+        {
+          id: SECOND_COMMENT_UUID,
+          text: 'Cool stuff',
+          authorId: SECOND_USER_ID,
+        }
+      ]
     }
   ]
 }
 
 async function seedDB(prismaClient:PrismaClient) {
   const mockTags = getTags();
-  console.log(mockTags);
   for (const tag of mockTags) {
     await prismaClient.tag.upsert({
       where: { id: tag.id },
@@ -98,20 +76,6 @@ async function seedDB(prismaClient:PrismaClient) {
         title: tag.title,
       }
     });
-  }
-
-  const mockComments = getComments();
-  for (const comment of mockComments) {
-    await prismaClient.comment.upsert({
-      where: { id: comment.id },
-      update: {},
-      create: {
-        id: comment.id,
-        text: comment.text,
-        authorId: comment.authorId,
-        post: comment.post
-      }
-    })
   }
 
   const mockPosts = getPosts();
@@ -125,9 +89,9 @@ async function seedDB(prismaClient:PrismaClient) {
         isDraft: post.isDraft,
         type: post.type,
         tags: post.tags,
-        comments: post.comments,
-        likes: post.likes,
-        updatedAt: new Date()
+        comments: post.comments ? {
+          create: post.comments
+        } : undefined
       }
     })
   }
