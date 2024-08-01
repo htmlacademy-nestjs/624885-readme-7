@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@project/blog-tag": ["libs/blogs/blog-tag/src/index.ts"],
       "@project/blogs-models": ["libs/blogs/models/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
