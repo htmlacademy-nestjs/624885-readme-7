@@ -14,7 +14,7 @@ export interface Post {
   likes: Like[];
   videoPost?: VideoPost;
   textPost?: TextPost;
-  quotePost: QuotePost;
-  photoPost: PhotoPost;
-  linkPost: LinkPost;
+  quotePost?: QuotePost;
+  photoPost?: PhotoPost;
+  linkPost?: LinkPost;
 }
