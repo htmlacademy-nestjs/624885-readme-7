@@ -1,7 +1,15 @@
 import { Module } from '@nestjs/common';
 import { BlogPostModule } from './post/post.module';
+import { BlogCommentModule } from './comment/comment.module';
+import { BlogLikeModule } from './like/like.module';
+import { BlogTagModule } from './tag/tag.module';
 
 @Module({
-  imports: [ BlogPostModule ],
+  imports: [
+    BlogPostModule,
+    BlogCommentModule,
+    BlogLikeModule,
+    BlogTagModule
+  ],
 })
 export class AppModule {}
