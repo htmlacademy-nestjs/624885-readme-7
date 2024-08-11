@@ -13,7 +13,7 @@ export class BlogCommentService {
     private readonly blogCommentFactory: BlogCommentFactory
   ) {}
 
-  public async getComments(postId: string): Promise<BlogCommentEntity> {
+  public async getComments(postId: string): Promise<BlogCommentEntity[]> {
     return this.blogCommentRepository.findByPostId(postId);
   }
 

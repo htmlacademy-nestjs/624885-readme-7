@@ -40,15 +40,15 @@ export class BlogCommentRepository extends BasePostgresRepository<BlogCommentEnt
     });
   }
 
-  public async findByPostId(postId: string): Promise<BlogCommentEntity> {
-    const document = await this.client.comment.findFirst({
+  public async findByPostId(postId: string): Promise<BlogCommentEntity[]> {
+    const records = await this.client.comment.findMany({
       where: { postId }
     });
 
-    if(!document) {
-      throw new NotFoundException(`Comment with postId: ${postId} not found.`);
-    }
+    // if(!document) {
+    //   throw new NotFoundException(`Comment with postId: ${postId} not found.`);
+    // }
 
-    return this.createEntityDocument(document);
+    return records.map(record => this.createEntityDocument(record));
   }
 }
