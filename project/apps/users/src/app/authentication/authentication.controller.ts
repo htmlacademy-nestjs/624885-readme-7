@@ -8,6 +8,7 @@ import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { UserRdo } from './rdo/user.rdo';
 import { AuthenticationResponseMessage} from './authentication.constant';
 import { fillDto } from '@project/helpers';
+import { MongoIdValidationPipe } from '@project/pipes';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -55,7 +56,7 @@ export class AuthenticationController {
     description: AuthenticationResponseMessage.UserNotFound,
   })
   @Get(':id')
-  public async show(@Param('id') id: string) {
+  public async show(@Param('id', MongoIdValidationPipe) id: string) {
     const user = await this.authService.getUser(id);
     return fillDto(UserRdo, user.toPOJO());
   }
