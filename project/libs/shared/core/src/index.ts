@@ -14,3 +14,6 @@ export { TextPost } from './lib/types/text-post.interface';
 export { QuotePost } from './lib/types/quote-post.interface';
 export { PhotoPost } from './lib/types/photo-post.interface';
 export { LinkPost } from './lib/types/link-post.interface';
+
+export { PaginationResult } from './lib/types/pagination.interface';
+export { SortDirection } from './lib/types/sort-direction.interface';
