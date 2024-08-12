@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BlogLikeRepository } from './like.repository';
-import { BlogPostService } from '../post/post.service';
+import { BlogPostService } from '../post/common/post.service';
 import { BlogLikeFactory } from './like.factory';
 
 @Injectable()
