@@ -1,11 +1,8 @@
 import { PostType } from '@prisma/client';
 import { Entity, Post, StorableEntity } from '@project/core';
-import { BlogTagEntity } from '../../tag/tag.entity';
-import { BlogCommentEntity } from '../../comment/comment.entity';
-import { BlogLikeEntity } from '../../like/like.entity';
-import { BlogTagFactory } from '../../tag/tag.factory';
-import { BlogCommentFactory } from '../../comment/comment.factory';
-import { BlogLikeFactory } from '../../like/like.factory';
+import { BlogTagEntity, BlogTagFactory } from '@blogs/tag';
+import { BlogCommentEntity, BlogCommentFactory } from '@blogs/comment';
+import { BlogLikeEntity, BlogLikeFactory } from '@blogs/like';
 
 export class BlogPostEntity extends Entity implements StorableEntity<Post> {
   public authorId: string;

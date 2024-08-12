@@ -1,8 +1,8 @@
 import { PostType } from '@prisma/client';
 import { Expose, Type } from 'class-transformer';
-import { CommentRdo } from '../../../comment/rdo/comment.rdo';
-import { LikeRdo } from '../../../like/rdo/like.rdo';
-import { TagRdo } from '../../../tag/rdo/tag.rdo';
+import { CommentRdo } from '@blogs/comment';
+import { LikeRdo } from '@blogs/like';
+import { TagRdo } from '@blogs/tag';
 
 export class PostRdo {
   @Expose()
