@@ -17,3 +17,6 @@ export { LinkPost } from './lib/types/link-post.interface';
 
 export { PaginationResult } from './lib/types/pagination.interface';
 export { SortDirection } from './lib/types/sort-direction.interface';
+
+export { TokenPayload } from './lib/types/token-payload.interface';
+export { Token } from './lib/types/token.interface';
