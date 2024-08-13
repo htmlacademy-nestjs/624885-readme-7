@@ -1,9 +1,6 @@
 import { Post } from '@project/core';
 
-export interface VideoPost {
-  id?: string;
+export interface VideoPost extends Post {
   title: string;
   link: string;
-  post: Post;
-  postId: string;
 }

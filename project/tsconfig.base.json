@@ -17,6 +17,7 @@
     "paths": {
       "@blogs/comment": ["apps/blogs/src/app/comment/index.ts"],
       "@blogs/like": ["apps/blogs/src/app/like/index.ts"],
+      "@blogs/post": ["apps/blogs/src/app/post/index.ts"],
       "@blogs/tag": ["apps/blogs/src/app/tag/index.ts"],
       "@project/blogs-models": ["libs/blogs/models/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
