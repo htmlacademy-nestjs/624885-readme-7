@@ -3,7 +3,7 @@ import { BlogCommentEntity } from './comment.entity';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { BlogCommentRepository } from './comment.repository';
 import { BlogCommentFactory } from './comment.factory';
-import { BlogPostService } from '../post/post.service';
+import { BlogPostService } from '../post/common/post.service';
 
 @Injectable()
 export class BlogCommentService {

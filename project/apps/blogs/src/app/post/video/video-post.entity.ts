@@ -1,12 +1,12 @@
-import { StorableEntity, VideoPost } from '@project/core';
-import { BlogPostEntity } from '@blogs/post';
+import { Entity, StorableEntity, VideoPost } from '@project/core';
 
-export class VideoPostEntity extends BlogPostEntity implements StorableEntity<VideoPost> {
+export class VideoPostEntity extends Entity implements StorableEntity<VideoPost> {
   public title: string;
   public link: string;
+  public postId: string;
 
   constructor(post: VideoPost) {
-    super(post);
+    super();
     this.populate(post);
   }
 
@@ -17,15 +17,14 @@ export class VideoPostEntity extends BlogPostEntity implements StorableEntity<Vi
 
     this.title = post.title;
     this.link = post.link;
+    this.postId = post.postId;
   }
 
   public toPOJO(): VideoPost {
-    const commonPOJO = super.toPOJO();
-
     return {
-      ...commonPOJO,
       title: this.title,
-      link: this.link
+      link: this.link,
+      postId: this.postId
     }
   }
 }
