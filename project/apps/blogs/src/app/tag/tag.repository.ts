@@ -14,6 +14,14 @@ export class BlogTagRepository extends BasePostgresRepository<BlogTagEntity, Tag
     super(entityFactory, client);
   }
 
+  public async save(entity: BlogTagEntity): Promise<BlogTagEntity> {
+    const document = await this.client.tag.create({
+      data: { ...entity.toPOJO() }
+    });
+
+    return this.createEntityDocument(document);
+  }
+
   public async findById(id: string): Promise<BlogTagEntity> {
     const document = await this.client.tag.findFirst({
       where: { id }
@@ -36,5 +44,17 @@ export class BlogTagRepository extends BasePostgresRepository<BlogTagEntity, Tag
     }
 
     return this.createEntityDocument(document);
+  }
+
+  public async findByTitles(titles: string[]): Promise<BlogTagEntity[]> {
+    const records = await this.client.tag.findMany({
+      where: {
+        title: {
+          in: titles
+        }
+      }
+    });
+
+    return records.map((record) => this.createEntityDocument(record));
   }
 }

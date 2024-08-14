@@ -2,7 +2,7 @@ import { IsBoolean, IsEnum, IsMongoId, IsOptional, IsString } from 'class-valida
 import { PostErrorMessage } from '../post.constant';
 import { PostType } from '@prisma/client';
 
-export class CreatePostDto {
+export class UpdatePostDto {
   @IsString()
   @IsMongoId({message: PostErrorMessage.InvalidId})
   @IsOptional()

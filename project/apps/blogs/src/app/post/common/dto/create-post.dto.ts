@@ -1,4 +1,4 @@
-import { IsBoolean, IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsEnum, IsMongoId, IsOptional, IsString } from 'class-validator';
 import { PostErrorMessage } from '../post.constant';
 import { PostType } from '@prisma/client';
 
@@ -16,4 +16,8 @@ export class CreatePostDto {
 
   @IsEnum({PostType}, {message: PostErrorMessage.TypeError})
   public type: PostType;
+
+  @IsString({each: true})
+  @IsArray()
+  public tags: string[];
 }

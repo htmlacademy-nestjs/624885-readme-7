@@ -8,7 +8,19 @@ export class VideoPostService {
     private readonly repository: VideoPostRepository
   ) {}
 
-  public async create(entity: VideoPostEntity): Promise<VideoPostEntity> {
+  public async create(entity: VideoPostEntity) {
     return this.repository.save(entity);
+  }
+
+  public async findById(id: string) {
+    return this.repository.findById(id);
+  }
+
+  public async update(entity: VideoPostEntity) {
+    return this.repository.update(entity);
+  }
+
+  public async deleteById(id: string) {
+    return this.repository.deleteById(id);
   }
 }
