@@ -63,4 +63,9 @@ export class AuthenticationController {
     const user = await this.authService.getUser(id);
     return fillDto(UserRdo, user.toPOJO());
   }
+
+  @Get('test')
+  public async test() {
+    return 'test';
+  }
 }

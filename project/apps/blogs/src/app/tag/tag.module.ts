@@ -5,7 +5,7 @@ import { BlogTagService } from './tag.service';
 
 @Module({
   imports: [],
-  providers: [BlogTagFactory, BlogTagRepository],
+  providers: [BlogTagFactory, BlogTagRepository, BlogTagService],
   exports: [BlogTagService]
 })
 export class BlogTagModule {}

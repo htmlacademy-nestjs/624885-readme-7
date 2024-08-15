@@ -10,7 +10,12 @@ export class BlogPostController {
     private readonly blogPostService: BlogPostService
   ) {}
 
-  @Get('/:id')
+  @Get('test')
+  public async test() {
+    return 'test';
+  }
+
+  @Get(':id')
   public async show(@Param('id') id: string) {
     const post = await this.blogPostService.getPost(id);
     return fillDto(PostRdo, post.toPOJO())
