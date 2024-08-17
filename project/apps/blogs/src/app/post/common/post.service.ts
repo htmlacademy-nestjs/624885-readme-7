@@ -3,17 +3,15 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { BlogPostEntity } from './post.entity';
 import { BlogPostFactory } from './post.factory';
 import { BlogPostRepository } from './post.repository';
+import { Injectable } from '@nestjs/common';
 
-
+@Injectable()
 export class BlogPostService {
   constructor(
     private readonly blogPostRepository: BlogPostRepository,
     private readonly blogPostFactory: BlogPostFactory,
     private readonly blogTagService: BlogTagService
-  ) {
-
-    console.log(this.blogPostRepository);
-  }
+  ) {}
 
   public async getPost(id: string): Promise<BlogPostEntity> {
     return this.blogPostRepository.findById(id);

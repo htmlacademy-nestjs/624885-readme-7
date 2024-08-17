@@ -5,6 +5,6 @@ import { BlogCommentRepository } from './comment.repository';
 @Module({
   imports: [],
   providers: [BlogCommentFactory, BlogCommentRepository],
-  exports: [BlogCommentRepository]
+  exports: [BlogCommentRepository, BlogCommentFactory]
 })
 export class BlogCommentModule {}

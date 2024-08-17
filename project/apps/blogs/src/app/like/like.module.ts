@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { BlogLikeFactory } from './like.factory';
 import { BlogLikeRepository } from './like.repository';
-import { BlogPostModule } from '../post/common/post.module';
 import { PrismaClientModule } from '@project/blogs-models';
+import { BlogLikeService } from './like.service';
 
 @Module({
   imports: [PrismaClientModule],
-  providers: [BlogLikeFactory, BlogLikeRepository],
-  exports: [BlogLikeRepository]
+  providers: [BlogLikeFactory, BlogLikeRepository, BlogLikeService],
+  exports: [BlogLikeService, BlogLikeFactory]
 })
 export class BlogLikeModule {}

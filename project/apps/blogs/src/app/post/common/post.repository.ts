@@ -12,7 +12,6 @@ export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, P
     readonly client: PrismaClientService
   ) {
     super(entityFactory, client);
-    console.log('BlogPostRepository');
   }
 
   public async save(entity: BlogPostEntity): Promise<BlogPostEntity> {
