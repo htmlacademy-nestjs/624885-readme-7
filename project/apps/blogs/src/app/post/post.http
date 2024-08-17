@@ -1,6 +1,6 @@
 
 # Get post by ID
-GET http://localhost:3000/api/posts/39614113-7ad5-45b6-8093-06455437e1e2 HTTP/1.1
+GET http://localhost:3000/api/posts/6d308040-96a2-4162-bea6-2338e9976540 HTTP/1.1
 
 ###
 
