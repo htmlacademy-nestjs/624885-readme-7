@@ -1,11 +1,26 @@
 
 # Get post by ID
-GET http://localhost:3000/api/posts/6d308040-96a2-4162-bea6-2338e9976540 HTTP/1.1
+GET http://localhost:3000/api/posts/d905c2dd-a5c3-476a-8ceb-cf7b10f327fe HTTP/1.1
 
 ###
 
 # Test
 
-GET http://localhost:3000/api/posts/test
+GET http://localhost:3000/api/posts?limit=2&page=2
 
 ###
+
+# Create post
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+  "authorId": "12345678",
+  "isDraft": true,
+  "type": "VIDEO",
+  "tags": ["cats"],
+  "videoPost": {
+    "title": "test video5",
+    "linkklj": "https://vk.ru/video-220060683_456241083"
+  }
+}

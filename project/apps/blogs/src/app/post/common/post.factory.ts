@@ -35,6 +35,7 @@ export class BlogPostFactory implements EntityFactory<BlogPostEntity> {
     entity.likes = [];
     entity.createdAt = post.createdAt ?? undefined;
     entity.updatedAt = post.updatedAt ?? undefined;
+    entity.videoPost = post.videoPost ?? undefined;
 
     for(const tag of post.tags) {
       const blogTagEntity = this.blogTagFactory.create(tag);

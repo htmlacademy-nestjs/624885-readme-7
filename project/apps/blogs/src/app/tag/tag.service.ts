@@ -25,7 +25,7 @@ export class BlogTagService {
 
   public async getTagsByTitles(titles: string[]) {
     const tags = await this.blogTagRepository.findByTitles(titles);
-
+    console.log('tags',tags,'titles', titles);
     if(tags.length !== titles.length) {
       const foundTagTitles = tags.map((tag) => tag.title);
       const notFoundTagTitles = titles.filter((title) => !foundTagTitles.includes(title));

@@ -1,5 +1,5 @@
 import { PostType } from '@prisma/client';
-import { Entity, Post, StorableEntity } from '@project/core';
+import { Entity, Post, StorableEntity, VideoPost } from '@project/core';
 import { BlogTagEntity } from '@blogs/tag';
 import { BlogCommentEntity } from '@blogs/comment';
 import { BlogLikeEntity } from '@blogs/like';
@@ -14,6 +14,7 @@ export class BlogPostEntity extends Entity implements StorableEntity<Post> {
   public likes: BlogLikeEntity[];
   public createdAt?: Date;
   public updatedAt?: Date;
+  public videoPost?: VideoPost;
 
   public toPOJO(): Post {
     return {

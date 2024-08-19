@@ -3,6 +3,7 @@ import { Expose, Type } from 'class-transformer';
 import { CommentRdo } from '@blogs/comment';
 import { LikeRdo } from '@blogs/like';
 import { TagRdo } from '@blogs/tag';
+import { VideoPostRdo } from '../../video/rdo/video-post.rdo';
 
 export class PostRdo {
   @Expose()
@@ -37,4 +38,8 @@ export class PostRdo {
 
   @Expose()
   public updatedAt: Date;
+
+  @Expose()
+  @Type(() => VideoPostRdo)
+  public videoPost: VideoPostRdo;
 }
