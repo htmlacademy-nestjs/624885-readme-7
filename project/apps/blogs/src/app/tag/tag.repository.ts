@@ -54,7 +54,6 @@ export class BlogTagRepository extends BasePostgresRepository<BlogTagEntity, Tag
         }
       }
     });
-    console.log('records', records)
     return records.map((record) => this.createEntityDocument(record));
   }
 }

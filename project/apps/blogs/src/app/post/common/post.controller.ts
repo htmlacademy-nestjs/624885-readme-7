@@ -27,6 +27,7 @@ export class BlogPostController {
   @Get(':id')
   public async show(@Param('id') id: string) {
     const post = await this.blogPostService.getPost(id);
+    console.log(post)
     return fillDto(PostRdo, post.toPOJO())
   }
 

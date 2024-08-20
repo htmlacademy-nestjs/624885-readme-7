@@ -2,8 +2,12 @@ import { ArrayMaxSize, IsArray, IsBoolean, IsEnum, IsMongoId, IsOptional, IsStri
 import { MAX_TAG_COUNT, MAX_TAG_LENGTH, MIN_TAG_LENGTH, PostErrorMessage } from '../post.constant';
 import { PostType } from '@prisma/client';
 import { Type } from 'class-transformer';
-import { CreateVideoPostDto } from '../../video/dto/create-video-post.dto';
 import { ApiProperty } from '@nestjs/swagger';
+import { CreateVideoPostDto } from '../../video/dto/create-video-post.dto';
+import { CreateTextPostDto } from '../../text/dto/create-text-post.dto';
+import { CreateLinkPostDto } from '../../link/dto/create-link-post.dto';
+import { CreatePhotoPostDto } from '../../photo/dto/create-photo-post.dto';
+import { CreateQuotePostDto } from '../../quote/dto/create-quote-post.dto';
 
 export class CreatePostDto {
   @ApiProperty({
@@ -38,4 +42,24 @@ export class CreatePostDto {
   @IsOptional()
   @Type(() => CreateVideoPostDto)
   public videoPost?: CreateVideoPostDto;
+
+  @ValidateNested()
+  @IsOptional()
+  @Type(() => CreateTextPostDto)
+  public textPost?: CreateTextPostDto;
+
+  @ValidateNested()
+  @IsOptional()
+  @Type(() => CreateQuotePostDto)
+  public quotePost?: CreateQuotePostDto;
+
+  @ValidateNested()
+  @IsOptional()
+  @Type(() => CreatePhotoPostDto)
+  public photoPost?: CreatePhotoPostDto;
+
+  @ValidateNested()
+  @IsOptional()
+  @Type(() => CreateLinkPostDto)
+  public linkPost?: CreateLinkPostDto;
 }

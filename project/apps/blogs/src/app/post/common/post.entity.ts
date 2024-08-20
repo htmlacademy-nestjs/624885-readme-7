@@ -1,5 +1,14 @@
 import { PostType } from '@prisma/client';
-import { Entity, Post, StorableEntity, VideoPost } from '@project/core';
+import {
+  Entity,
+  Post,
+  StorableEntity,
+  VideoPost,
+  TextPost,
+  QuotePost,
+  PhotoPost,
+  LinkPost
+} from '@project/core';
 import { BlogTagEntity } from '@blogs/tag';
 import { BlogCommentEntity } from '@blogs/comment';
 import { BlogLikeEntity } from '@blogs/like';
@@ -15,6 +24,10 @@ export class BlogPostEntity extends Entity implements StorableEntity<Post> {
   public createdAt?: Date;
   public updatedAt?: Date;
   public videoPost?: VideoPost;
+  public textPost?: TextPost;
+  public quotePost?: QuotePost;
+  public photoPost?: PhotoPost;
+  public linkPost?: LinkPost;
 
   public toPOJO(): Post {
     return {
@@ -28,7 +41,11 @@ export class BlogPostEntity extends Entity implements StorableEntity<Post> {
       likes: this.likes.map((like) => like.toPOJO()),
       createdAt: this.createdAt,
       updatedAt: this.updatedAt,
-      videoPost: this.videoPost
+      videoPost: this.videoPost,
+      textPost: this.textPost,
+      quotePost: this.quotePost,
+      photoPost: this.photoPost,
+      linkPost: this.linkPost
     }
   }
 }

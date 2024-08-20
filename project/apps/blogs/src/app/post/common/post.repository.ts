@@ -45,7 +45,11 @@ export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, P
         tags: true,
         comments: true,
         likes: true,
-        videoPost: true
+        videoPost: true,
+        textPost: true,
+        quotePost: true,
+        photoPost: true,
+        linkPost: true
       }
     });
     return this.createEntityDocument(record);
@@ -76,7 +80,12 @@ export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, P
         include: {
           tags: true,
           comments: true,
-          likes: true
+          likes: true,
+          videoPost: true,
+          textPost: true,
+          quotePost: true,
+          photoPost: true,
+          linkPost: true
         }
       }),
       this.getPostCount(where)
@@ -100,7 +109,11 @@ export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, P
         tags: true,
         comments: true,
         likes: true,
-        videoPost: true
+        videoPost: true,
+        textPost: true,
+        quotePost: true,
+        photoPost: true,
+        linkPost: true
       }
     })
 
