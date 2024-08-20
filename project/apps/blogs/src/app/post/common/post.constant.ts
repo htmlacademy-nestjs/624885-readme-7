@@ -22,3 +22,15 @@ export const PostResponseMessage = {
   PostCreated: 'Post created',
   PostsOk: 'Posts loaded'
 }
+
+export const TITLE_MIN_LENGTH = 20;
+export const TITLE_MAX_LENGTH = 50;
+export const ANNOUNCE_MIN_LENGTH = 50;
+export const ANNOUNCE_MAX_LENGTH = 255;
+export const TEXT_MIN_LENGTH = 100;
+export const TEXT_MAX_LENGTH = 1024;
+export const QUOTE_MIN_LENGTH = 20;
+export const QUOTE_MAX_LENGTH = 300;
+export const QUOTE_AUTHOR_MIN_LENGTH = 3;
+export const QUOTE_AUTHOR_MAX_LENGTH = 50;
+export const LINK_DESCRIPTION_MAX_LENGTH = 300;

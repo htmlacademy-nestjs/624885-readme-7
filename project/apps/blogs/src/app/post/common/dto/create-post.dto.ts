@@ -25,7 +25,7 @@ export class CreatePostDto {
   @IsOptional()
   public repostFrom?: string;
 
-  @IsEnum({PostType}, {message: PostErrorMessage.TypeError})
+  @IsEnum(PostType, {message: PostErrorMessage.TypeError})
   public type: PostType;
 
   @IsArray()

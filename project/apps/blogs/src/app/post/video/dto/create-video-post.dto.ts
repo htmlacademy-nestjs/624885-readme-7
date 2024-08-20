@@ -1,5 +1,6 @@
+import { TITLE_MIN_LENGTH, TITLE_MAX_LENGTH } from '@blogs/post';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsUrl } from 'class-validator';
+import { IsString, IsUrl, MaxLength, MinLength,  } from 'class-validator';
 
 export class CreateVideoPostDto {
   @ApiProperty({
@@ -7,6 +8,8 @@ export class CreateVideoPostDto {
     example: 'This is my video'
   })
   @IsString()
+  @MinLength(TITLE_MIN_LENGTH)
+  @MaxLength(TITLE_MAX_LENGTH)
   public title: string;
 
   @ApiProperty({

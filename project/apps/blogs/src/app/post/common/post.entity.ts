@@ -27,7 +27,8 @@ export class BlogPostEntity extends Entity implements StorableEntity<Post> {
       comments: this.comments.map((comment) => comment.toPOJO()),
       likes: this.likes.map((like) => like.toPOJO()),
       createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      updatedAt: this.updatedAt,
+      videoPost: this.videoPost
     }
   }
 }

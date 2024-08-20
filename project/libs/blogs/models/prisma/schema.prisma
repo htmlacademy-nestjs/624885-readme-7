@@ -75,6 +75,7 @@ model QuotePost {
 
 model PhotoPost {
   id     String @id @default(uuid())
+  photo  String
   post   Post   @relation(fields: [postId], references: [id])
   postId String @unique
 
