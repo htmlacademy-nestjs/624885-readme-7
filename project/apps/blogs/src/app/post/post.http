@@ -4,9 +4,9 @@ GET http://localhost:3000/api/posts/569bb5e6-abea-4e0c-acc0-1e8d8e14d384 HTTP/1.
 
 ###
 
-# Test
+# Get posts
 
-GET http://localhost:3000/api/posts?limit=2&page=2
+GET http://localhost:3000/api/posts?sortDirection=asc
 
 ###
 
@@ -17,10 +17,14 @@ Content-Type: application/json
 {
   "authorId": "66bb4569d589a96532f9715c",
   "isDraft": true,
-  "type": "VIDEO",
-  "tags": ["cats"],
-  "videoPost": {
-    "title": "test video534345567865767867876786",
+  "type": "LINK",
+  "tags": ["test"],
+  "linkPost": {
+    "description": "test link",
     "link": "https://vk.ru/video-220060683_456241083"
   }
 }
+
+###
+# Delete post
+DELETE  http://localhost:3000/api/posts/f186858e-99c8-4a62-a6ea-657a99a710f1

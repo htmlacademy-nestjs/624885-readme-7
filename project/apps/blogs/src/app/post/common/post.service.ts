@@ -80,4 +80,8 @@ export class BlogPostService {
     const foundPost = await this.blogPostRepository.findById(createdPost.id);
     return foundPost;
   }
+
+  public async deletePost(id: string) {
+    await this.blogPostRepository.deleteById(id);
+  }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Query } from '@nestjs/common';
 import { BlogPostService } from './post.service';
 import { fillDto } from '@project/helpers';
 import { PostRdo } from './rdo/post.rdo';
@@ -27,7 +27,6 @@ export class BlogPostController {
   @Get(':id')
   public async show(@Param('id') id: string) {
     const post = await this.blogPostService.getPost(id);
-    console.log(post)
     return fillDto(PostRdo, post.toPOJO())
   }
 
@@ -55,5 +54,10 @@ export class BlogPostController {
     const newPost = await this.blogPostService.createPost(dto);
 
     return fillDto(PostRdo, newPost.toPOJO());
+  }
+
+  @Delete(':id')
+  public async delete(@Param('id') id: string) {
+    await this.blogPostService.deletePost(id);
   }
 }
