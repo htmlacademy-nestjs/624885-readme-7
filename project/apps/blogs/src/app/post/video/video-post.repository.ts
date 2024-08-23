@@ -48,5 +48,14 @@ export class VideoPostRepository extends BasePostgresRepository<VideoPostEntity,
     });
   }
 
+  public async findByPostId(postId: string): Promise<VideoPostEntity> {
+    const document = await this.client.videoPost.findFirst({
+      where: { postId }
+    });
+    if(!document) {
+      throw new NotFoundException(`VideoPost with postId: ${postId} not found.`)
+    }
 
+    return this.createEntityDocument(document);
+  }
 }

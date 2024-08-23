@@ -155,7 +155,12 @@ export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, P
       include: {
         tags: true,
         comments: true,
-        likes: true
+        likes: true,
+        videoPost: true,
+        textPost: true,
+        quotePost: true,
+        photoPost: true,
+        linkPost: true
       }
     })
   }

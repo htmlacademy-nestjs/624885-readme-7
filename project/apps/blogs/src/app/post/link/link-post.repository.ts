@@ -48,5 +48,15 @@ export class LinkPostRepository extends BasePostgresRepository<LinkPostEntity, L
     });
   }
 
+  public async findByPostId(postId: string): Promise<LinkPostEntity> {
+    const document = await this.client.linkPost.findFirst({
+      where: { postId }
+    });
+    if(!document) {
+      throw new NotFoundException(`LinkPost with postId: ${postId} not found.`)
+    }
+
+    return this.createEntityDocument(document);
+  }
 
 }

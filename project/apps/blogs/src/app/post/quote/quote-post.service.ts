@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { QuotePostRepository } from './quote-post.repository';
-import { QuotePostEntity } from './quote-post.entity';
 import { CreateQuotePostDto } from './dto/create-quote-post.dto';
 import { QuotePostFactory } from './quote-post.factory';
+import { UpdateQuotePostDto } from './dto/update-quote-post.dto';
 
 @Injectable()
 export class QuotePostService {
@@ -23,8 +23,15 @@ export class QuotePostService {
     return this.repository.findById(id);
   }
 
-  public async update(entity: QuotePostEntity) {
-    return this.repository.update(entity);
+  public async update(dto: UpdateQuotePostDto, postId: string) {
+    const entity = await this.repository.findByPostId(postId);
+    for(const [key, value] of Object.entries(dto)) {
+      if( value !== undefined ) {
+        entity[key] = value
+      }
+    }
+    await this.repository.update(entity);
+    return entity.toPOJO();
   }
 
   public async deleteById(id: string) {

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { VideoPostRepository } from './video-post.repository';
-import { VideoPostEntity } from './video-post.entity';
 import { CreateVideoPostDto } from './dto/create-video-post.dto';
 import { VideoPostFactory } from './video-post.factory';
+import { UpdateVideoPostDto } from './dto/update-video-post.dto';
 
 @Injectable()
 export class VideoPostService {
@@ -23,8 +23,15 @@ export class VideoPostService {
     return this.repository.findById(id);
   }
 
-  public async update(entity: VideoPostEntity) {
-    return this.repository.update(entity);
+  public async update(dto: UpdateVideoPostDto, postId: string) {
+    const entity = await this.repository.findByPostId(postId);
+    for(const [key, value] of Object.entries(dto)) {
+      if( value !== undefined ) {
+        entity[key] = value
+      }
+    }
+    await this.repository.update(entity);
+    return entity.toPOJO();
   }
 
   public async deleteById(id: string) {

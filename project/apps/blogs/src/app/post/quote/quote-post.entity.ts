@@ -14,7 +14,7 @@ export class QuotePostEntity extends Entity implements StorableEntity<QuotePost>
     if(!post) {
       return;
     }
-
+    this.id = post.id;
     this.text = post.text;
     this.author = post.author;
     this.postId = post.postId;
@@ -22,6 +22,7 @@ export class QuotePostEntity extends Entity implements StorableEntity<QuotePost>
 
   public toPOJO(): QuotePost {
     return {
+      id: this.id,
       text: this.text,
       author: this.author,
       postId: this.postId

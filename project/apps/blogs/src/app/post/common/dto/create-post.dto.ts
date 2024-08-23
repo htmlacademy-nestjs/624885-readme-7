@@ -25,10 +25,18 @@ export class CreatePostDto {
   @IsBoolean({message: PostErrorMessage.IsDraftWrongType})
   public isDraft: boolean;
 
+  @ApiProperty({
+    description: 'Id of origin post',
+    example: 'f186858e-99c8-4a62-a6ea-657a99a710f1'
+  })
   @IsString()
   @IsOptional()
   public repostFrom?: string;
 
+  @ApiProperty({
+    description: 'Type of post',
+    example: 'VIDEO'
+  })
   @IsEnum(PostType, {message: PostErrorMessage.TypeError})
   public type: PostType;
 

@@ -48,5 +48,15 @@ export class TextPostRepository extends BasePostgresRepository<TextPostEntity, T
     });
   }
 
+  public async findByPostId(postId: string): Promise<TextPostEntity> {
+    const document = await this.client.textPost.findFirst({
+      where: { postId }
+    });
+    if(!document) {
+      throw new NotFoundException(`TextPost with postId: ${postId} not found.`)
+    }
+
+    return this.createEntityDocument(document);
+  }
 
 }

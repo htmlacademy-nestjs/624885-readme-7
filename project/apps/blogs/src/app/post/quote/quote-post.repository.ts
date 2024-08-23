@@ -48,5 +48,15 @@ export class QuotePostRepository extends BasePostgresRepository<QuotePostEntity,
     });
   }
 
+  public async findByPostId(postId: string): Promise<QuotePostEntity> {
+    const document = await this.client.quotePost.findFirst({
+      where: { postId }
+    });
+    if(!document) {
+      throw new NotFoundException(`QuotePost with postId: ${postId} not found.`)
+    }
+
+    return this.createEntityDocument(document);
+  }
 
 }

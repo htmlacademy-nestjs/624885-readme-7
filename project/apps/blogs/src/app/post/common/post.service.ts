@@ -11,6 +11,7 @@ import { TextPostService } from '../text/text-post.sevice';
 import { QuotePostService } from '../quote/quote-post.service';
 import { PhotoPostService } from '../photo/photo-post.service';
 import { LinkPostService } from '../link/link-post.service';
+import { UpdatePostDto } from './dto/update-post.dto';
 
 @Injectable()
 export class BlogPostService {
@@ -34,7 +35,6 @@ export class BlogPostService {
   }
 
   public async createPost(dto: CreatePostDto): Promise<BlogPostEntity> {
-    console.log(dto.tags);
     const tags = await this.blogTagService.getTagsByTitles(dto.tags);
     const newPostEntity = this.blogPostFactory.create({
       ...dto,
@@ -83,5 +83,53 @@ export class BlogPostService {
 
   public async deletePost(id: string) {
     await this.blogPostRepository.deleteById(id);
+  }
+
+  public async updatePost(id: string, dto: UpdatePostDto) {
+    const post = await this.blogPostRepository.findById(id);
+    if(!post) {
+      return;
+    }
+    for(const [key, value] of Object.entries(dto)) {
+      if( value !== undefined ) {
+        switch(key) {
+          case 'tags': {
+            post.tags = await this.blogTagService.getTagsByTitles(value);
+            break;
+          }
+          case 'videoPost': {
+            const updatedPost = await this.videoPostService.update(value, post.id);
+            post.videoPost = updatedPost;
+            break;
+          }
+          case 'textPost': {
+            const updatedPost = await this.textPostService.update(value, post.id);
+            post.textPost = updatedPost;
+            break;
+          }
+          case 'quotePost': {
+            const updatedPost = await this.quotePostService.update(value, post.id);
+            post.quotePost = updatedPost;
+            break;
+          }
+          case 'photoPost': {
+            const updatedPost = await this.photoPostService.update(value, post.id);
+            post.photoPost = updatedPost;
+            break;
+          }
+          case 'linkPost': {
+            const updatedPost = await this.linkPostService.update(value, post.id);
+            post.linkPost = updatedPost;
+            break;
+          }
+          default: {
+            post[key] = value;
+          }
+        }
+      }
+    }
+    await this.blogPostRepository.update(post);
+
+    return post;
   }
 }

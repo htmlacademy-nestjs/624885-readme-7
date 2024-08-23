@@ -14,7 +14,7 @@ export class LinkPostEntity extends Entity implements StorableEntity<LinkPost> {
     if(!post) {
       return;
     }
-
+    this.id = post.id;
     this.description = post.description;
     this.link = post.link;
     this.postId = post.postId;
@@ -22,6 +22,7 @@ export class LinkPostEntity extends Entity implements StorableEntity<LinkPost> {
 
   public toPOJO(): LinkPost {
     return {
+      id: this.id,
       description: this.description,
       link: this.link,
       postId: this.postId

@@ -48,5 +48,15 @@ export class PhotoPostRepository extends BasePostgresRepository<PhotoPostEntity,
     });
   }
 
+  public async findByPostId(postId: string): Promise<PhotoPostEntity> {
+    const document = await this.client.photoPost.findFirst({
+      where: { postId }
+    });
+    if(!document) {
+      throw new NotFoundException(`PhotoPost with postId: ${postId} not found.`)
+    }
+
+    return this.createEntityDocument(document);
+  }
 
 }

@@ -15,7 +15,7 @@ export class TextPostEntity extends Entity implements StorableEntity<TextPost> {
     if(!post) {
       return;
     }
-
+    this.id = post.id;
     this.title = post.title;
     this.announce = post.announce;
     this.text = post.text;
@@ -24,6 +24,7 @@ export class TextPostEntity extends Entity implements StorableEntity<TextPost> {
 
   public toPOJO(): TextPost {
     return {
+      id: this.id,
       title: this.title,
       announce: this.announce,
       text: this.text,

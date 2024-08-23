@@ -20,7 +20,8 @@ export const PostResponseMessage = {
   PostFound: 'Post found',
   PostNotFound: 'Post not found',
   PostCreated: 'Post created',
-  PostsOk: 'Posts loaded'
+  PostsOk: 'Posts loaded',
+  PostUpdated: 'Post updated'
 }
 
 export const TITLE_MIN_LENGTH = 20;

@@ -14,7 +14,7 @@ export class VideoPostEntity extends Entity implements StorableEntity<VideoPost>
     if(!post) {
       return;
     }
-
+    this.id = post.id;
     this.title = post.title;
     this.link = post.link;
     this.postId = post.postId;
@@ -22,6 +22,7 @@ export class VideoPostEntity extends Entity implements StorableEntity<VideoPost>
 
   public toPOJO(): VideoPost {
     return {
+      id: this.id,
       title: this.title,
       link: this.link,
       postId: this.postId

@@ -13,13 +13,14 @@ export class PhotoPostEntity extends Entity implements StorableEntity<PhotoPost>
     if(!post) {
       return;
     }
-
+    this.id = post.id;
     this.photo = post.photo;
     this.postId = post.postId;
   }
 
   public toPOJO(): PhotoPost {
     return {
+      id: this.id,
       photo: this.photo,
       postId: this.postId
     }

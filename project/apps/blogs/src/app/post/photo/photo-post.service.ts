@@ -3,6 +3,7 @@ import { PhotoPostRepository } from './photo-post.repository';
 import { PhotoPostEntity } from './photo-post.entity';
 import { CreatePhotoPostDto } from './dto/create-photo-post.dto';
 import { PhotoPostFactory } from './photo-post.factory';
+import { UpdatePhotoPostDto } from './dto/update-photo-post.dto';
 
 @Injectable()
 export class PhotoPostService {
@@ -23,8 +24,15 @@ export class PhotoPostService {
     return this.repository.findById(id);
   }
 
-  public async update(entity: PhotoPostEntity) {
-    return this.repository.update(entity);
+  public async update(dto: UpdatePhotoPostDto, postId: string) {
+    const entity = await this.repository.findByPostId(postId);
+    for(const [key, value] of Object.entries(dto)) {
+      if( value !== undefined ) {
+        entity[key] = value
+      }
+    }
+    await this.repository.update(entity);
+    return entity.toPOJO();
   }
 
   public async deleteById(id: string) {

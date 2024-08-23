@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { BlogPostService } from './post.service';
 import { fillDto } from '@project/helpers';
 import { PostRdo } from './rdo/post.rdo';
@@ -7,6 +7,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PostResponseMessage } from './post.constant';
 import { BlogPostWithPaginationRdo } from './rdo/post-with-pagination.rdo';
 import { BlogPostQuery } from './post.query';
+import { UpdatePostDto } from './dto/update-post.dto';
 
 @ApiTags('posts')
 @Controller('posts')
@@ -54,6 +55,17 @@ export class BlogPostController {
     const newPost = await this.blogPostService.createPost(dto);
 
     return fillDto(PostRdo, newPost.toPOJO());
+  }
+
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: PostResponseMessage.PostUpdated
+  })
+  @Patch(':id')
+  public async update(@Param('id') id: string, @Body() dto: UpdatePostDto) {
+    const updatedPost = await this.blogPostService.updatePost(id, dto);
+
+    return fillDto(PostRdo, updatedPost.toPOJO());
   }
 
   @Delete(':id')
