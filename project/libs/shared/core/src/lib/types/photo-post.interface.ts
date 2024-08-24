@@ -1,7 +1,5 @@
-import { Post } from '@project/core';
-
 export interface PhotoPost {
   id?: string;
-  post: Post;
+  photo: string;
   postId: string;
 }

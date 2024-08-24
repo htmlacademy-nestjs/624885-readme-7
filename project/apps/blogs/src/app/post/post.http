@@ -1,0 +1,30 @@
+
+# Get post by ID
+GET http://localhost:3000/api/posts/569bb5e6-abea-4e0c-acc0-1e8d8e14d384 HTTP/1.1
+
+###
+
+# Get posts
+
+GET http://localhost:3000/api/posts?sortDirection=asc
+
+###
+
+# Create post
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+  "authorId": "66bb4569d589a96532f9715c",
+  "isDraft": true,
+  "type": "LINK",
+  "tags": ["test"],
+  "linkPost": {
+    "description": "test link",
+    "link": "https://vk.ru/video-220060683_456241083"
+  }
+}
+
+###
+# Delete post
+DELETE  http://localhost:3000/api/posts/f186858e-99c8-4a62-a6ea-657a99a710f1

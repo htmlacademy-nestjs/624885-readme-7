@@ -5,6 +5,18 @@ import { BlogLikeEntity } from './like.entity';
 @Injectable()
 export class BlogLikeFactory implements EntityFactory<BlogLikeEntity> {
   public create(entityPlainData: Like): BlogLikeEntity {
-    return new BlogLikeEntity(entityPlainData);
+    const entity = new BlogLikeEntity();
+    this.populate(entity, entityPlainData);
+    return entity;
+  }
+
+  private populate(entity:BlogLikeEntity, like: Like) {
+    if(!like) {
+      return;
+    }
+
+    entity.id = like.id ?? undefined;
+    entity.userId = like.userId;
+    entity.postId = like.postId;
   }
 }

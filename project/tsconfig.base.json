@@ -15,10 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@blogs/comment": ["apps/blogs/src/app/comment/index.ts"],
+      "@blogs/like": ["apps/blogs/src/app/like/index.ts"],
+      "@blogs/post": ["apps/blogs/src/app/post/index.ts"],
+      "@blogs/tag": ["apps/blogs/src/app/tag/index.ts"],
       "@project/blogs-models": ["libs/blogs/models/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"],
+      "@project/pipes": ["libs/shared/pipes/src/index.ts"],
       "@users/authentication": ["apps/users/src/app/authentication/*"],
       "@users/blog-user": ["apps/users/src/app/blog-user/index.ts"],
       "@users/config": ["apps/users/src/app/config/index.ts"]
