@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint src/ --ext .ts",
     "mongo:start": "docker compose --file ./apps/users/docker-compose.dev.yml --project-name readme-users --env-file ./apps/users/users.env up -d",
-    "postgres:start": "docker compose --file ./apps/blogs/docker-compose.dev.yml --env-file ./apps/blogs/blogs.env --project-name readme-blogs up -d"
+    "postgres:start": "docker compose --file ./apps/blogs/docker-compose.dev.yml --env-file ./apps/blogs/blogs.env --project-name readme-blogs up -d",
+    "files:mongo:start": "docker compose --file ./apps/files/files.compose.dev.yml --project-name readme-files --env-file ./apps/files/files.env up -d"
   },
   "private": true,
   "dependencies": {
