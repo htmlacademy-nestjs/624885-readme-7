@@ -20,9 +20,12 @@
       "@blogs/post": ["apps/blogs/src/app/post/index.ts"],
       "@blogs/tag": ["apps/blogs/src/app/tag/index.ts"],
       "@project/blogs-models": ["libs/blogs/models/src/index.ts"],
-      "@project/config": ["apps/files/src/app/config/src/index.ts"],
+      "@project/files-config": ["apps/files/src/app/config/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@project/file-uploader": [
+        "apps/files/src/app/file-uploader/src/index.ts"
+      ],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"],
       "@project/pipes": ["libs/shared/pipes/src/index.ts"],
       "@users/authentication": ["apps/users/src/app/authentication/*"],
