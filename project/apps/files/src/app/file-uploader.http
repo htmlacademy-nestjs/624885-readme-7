@@ -3,10 +3,14 @@ POST http://localhost:3000/api/files/upload HTTP/1.1
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
-Content-Disposition: form-data; name="file"; filename="file-uploader.http"
+Content-Disposition: form-data; name="file"; filename="app-module.ts"
 
-< ./file-uploader.http
+< ./app-module.ts
 
 --boundary--
+
+###
+# Get file by ID
+GET http://localhost:3000/api/files/66ca3a68c9ebf1ceb90f25ca HTTP/1.1
 
 ###
