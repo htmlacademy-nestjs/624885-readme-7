@@ -20,6 +20,7 @@
       "@blogs/post": ["apps/blogs/src/app/post/index.ts"],
       "@blogs/tag": ["apps/blogs/src/app/tag/index.ts"],
       "@project/blogs-models": ["libs/blogs/models/src/index.ts"],
+      "@project/config": ["apps/files/src/app/config/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"],
