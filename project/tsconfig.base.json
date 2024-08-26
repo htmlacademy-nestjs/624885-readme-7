@@ -5,6 +5,7 @@
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -22,8 +23,19 @@
       "@project/blogs-models": ["libs/blogs/models/src/index.ts"],
       "@project/core": ["libs/shared/core/src/index.ts"],
       "@project/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@project/email-subscriber": [
+        "apps/notifications/src/app/email-subscriber/src/index.ts"
+      ],
+      "@project/file-uploader": [
+        "apps/files/src/app/file-uploader/src/index.ts"
+      ],
+      "@project/files-config": ["apps/files/src/app/config/src/index.ts"],
       "@project/helpers": ["libs/shared/helpers/src/index.ts"],
+      "@project/notifications-config": [
+        "apps/notifications/src/app/config/src/index.ts"
+      ],
       "@project/pipes": ["libs/shared/pipes/src/index.ts"],
+      "@users/notify": ["apps/users/src/app/notify/src/index.ts"],
       "@users/authentication": ["apps/users/src/app/authentication/*"],
       "@users/blog-user": ["apps/users/src/app/blog-user/index.ts"],
       "@users/config": ["apps/users/src/app/config/index.ts"]

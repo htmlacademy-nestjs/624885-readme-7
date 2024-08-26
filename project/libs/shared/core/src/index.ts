@@ -20,3 +20,9 @@ export { SortDirection } from './lib/types/sort-direction.interface';
 
 export { TokenPayload } from './lib/types/token-payload.interface';
 export { Token } from './lib/types/token.interface';
+
+export { File } from './lib/types/file.interface';
+export { } from './lib/types/stored-file.interface';
+
+export { Subscriber } from './lib/types/subscriber.interface';
+export { RabbitRouting } from './lib/types/rabbit-routing.interface'

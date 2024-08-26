@@ -6,3 +6,6 @@ export { getMongooseOptions } from './configurations/mongo/get-mongoose-options'
 
 export { default as jwtConfig } from './configurations/jwt/jwt.config';
 export { getJwtOptions } from './configurations/jwt/get-jwt-options';
+
+export { default as rabbitConfig } from './configurations/rabbit.config';
+

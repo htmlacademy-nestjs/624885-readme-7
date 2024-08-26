@@ -1,0 +1,9 @@
+{
+  "name": "users-notify",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/users/src/app/notify/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project users-notify --web",
+  "targets": {}
+}
