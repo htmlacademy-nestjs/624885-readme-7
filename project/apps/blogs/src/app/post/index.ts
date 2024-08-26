@@ -4,4 +4,5 @@ export { BlogPostModule } from './common/post.module';
 export { BlogPostRepository } from './common/post.repository';
 export { BlogPostService } from './common/post.service';
 export * from './common/post.constant';
+export { CreatePostDto } from './common/dto/create-post.dto';
 

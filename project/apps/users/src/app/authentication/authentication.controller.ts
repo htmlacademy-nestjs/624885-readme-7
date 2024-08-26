@@ -81,4 +81,18 @@ export class AuthenticationController {
     return this.authService.createUserToken(user);
   }
 
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: AuthenticationResponseMessage.UserFound
+  })
+  @ApiResponse({
+    status: HttpStatus.NOT_FOUND,
+    description: AuthenticationResponseMessage.UserNotFound,
+  })
+  @UseGuards(JwtAuthGuard)
+  @Post('check')
+  public async checkToken(@Req() { user: payload }: RequestWithUser) {
+    return payload;
+  }
+
 }
