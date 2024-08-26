@@ -4,11 +4,13 @@ import { Controller } from '@nestjs/common';
 import { EmailSubscriberService } from './email-subscriber.service';
 import { RabbitRouting } from '@project/core';
 import { CreateSubscriberDto } from './dto/create-subscriber.dto';
+import { MailService } from './mail-module/mail.service';
 
 @Controller()
 export class EmailSubscriberController {
   constructor(
-    private readonly emailSubscriberService: EmailSubscriberService
+    private readonly emailSubscriberService: EmailSubscriberService,
+    private readonly mailService: MailService
   ) {}
 
   @RabbitSubscribe({
@@ -18,5 +20,6 @@ export class EmailSubscriberController {
   })
   public async create(subscriber: CreateSubscriberDto) {
     this.emailSubscriberService.addSubscriber(subscriber);
+    this.mailService.sendNotifyNewSubscriber(subscriber);
   }
 }
