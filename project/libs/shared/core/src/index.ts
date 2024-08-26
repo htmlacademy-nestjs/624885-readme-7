@@ -20,6 +20,8 @@ export { SortDirection } from './lib/types/sort-direction.interface';
 
 export { TokenPayload } from './lib/types/token-payload.interface';
 export { Token } from './lib/types/token.interface';
+export { JwtToken } from './lib/types/jwt-token.interface';
+export { RefreshTokenPayload } from './lib/types/refresh-token-payload.interface';
 
 export { File } from './lib/types/file.interface';
 export { } from './lib/types/stored-file.interface';

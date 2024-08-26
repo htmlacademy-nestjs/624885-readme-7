@@ -12,6 +12,7 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { NotifyService } from '@users/notify';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { RequestWithUser } from './request-with-user.iterface';
+import { JwtRefreshGuard } from './guards/jwt-refresh.guard';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -70,8 +71,14 @@ export class AuthenticationController {
     return fillDto(UserRdo, user.toPOJO());
   }
 
-  @Get('test')
-  public async test() {
-    return 'test';
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: AuthenticationResponseMessage.RefreshToken
+  })
+  @UseGuards(JwtRefreshGuard)
+  @Post('refresh')
+  public async refreshToken(@Req() {user}: RequestWithUser) {
+    return this.authService.createUserToken(user);
   }
+
 }
