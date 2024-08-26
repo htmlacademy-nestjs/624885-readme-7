@@ -1,0 +1,17 @@
+# Login user by email and password
+POST http://localhost:3000/api/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "user@notfound.local",
+  "password": "123456"
+}
+
+###
+
+# Get new JWT pair
+POST http://localhost:3000/api/users/refresh HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmNiNWNjMDllZjJhYWQzODUzNDI3ODAiLCJlbWFpbCI6InVzZXJAbm90Zm91bmQubG9jYWwiLCJuYW1lIjoiS2VrcyIsInRva2VuSWQiOiJlYzg5OGI4ZS04MmM2LTQxNTYtOGYxNC1jOWZlY2Y0MWYyNDciLCJpYXQiOjE3MjQ2ODY0MDAsImV4cCI6MTcyNzI3ODQwMH0.uyvNBlZsnONCMNikpDt32HTdd2HV58LC1V3a6aR2GAE
+
+###
+
