@@ -36,7 +36,7 @@
       ],
       "@project/pipes": ["libs/shared/pipes/src/index.ts"],
       "@users/notify": ["apps/users/src/app/notify/src/index.ts"],
-      "@users/authentication": ["apps/users/src/app/authentication/*"],
+      "@users/authentication": ["apps/users/src/app/authentication/index.ts"],
       "@users/blog-user": ["apps/users/src/app/blog-user/index.ts"],
       "@users/config": ["apps/users/src/app/config/index.ts"]
     }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { AuthenticationService } from './authentication.service';
@@ -11,6 +11,8 @@ import { fillDto } from '@project/helpers';
 import { MongoIdValidationPipe } from '@project/pipes';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { NotifyService } from '@users/notify';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { RequestWithUser } from './request-with-user.iterface';
 
 @ApiTags('authentication')
 @Controller('auth')
@@ -46,11 +48,11 @@ export class AuthenticationController {
     status: HttpStatus.UNAUTHORIZED,
     description: AuthenticationResponseMessage.LoggedError,
   })
+  @UseGuards(LocalAuthGuard)
   @Post('login')
-  public async login(@Body() dto: LoginUserDto) {
-    const verifiedUser = await this.authService.verifyUser(dto);
-    const accessToken = await this.authService.createUserToken(verifiedUser);
-    return fillDto(LoggedUserRdo, {...verifiedUser.toPOJO(), accessToken});
+  public async login(@Req() { user }: RequestWithUser) {
+    const accessToken = await this.authService.createUserToken(user);
+    return fillDto(LoggedUserRdo, {...user.toPOJO(), accessToken});
   }
 
   @ApiResponse({
