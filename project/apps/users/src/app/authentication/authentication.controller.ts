@@ -3,7 +3,6 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { AuthenticationService } from './authentication.service';
 import { CreateUserDto } from './dto/create-user.dto';
-import { LoginUserDto } from './dto/login-user.dto';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { UserRdo } from './rdo/user.rdo';
 import { AuthenticationResponseMessage} from './authentication.constant';
