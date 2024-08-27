@@ -11,5 +11,6 @@ import { BlogTagModule } from './tag/tag.module';
     BlogLikeModule,
     BlogTagModule
   ],
+  exports: [BlogTagModule]
 })
 export class AppModule {}

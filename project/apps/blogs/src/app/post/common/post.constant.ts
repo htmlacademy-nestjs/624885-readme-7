@@ -1,4 +1,4 @@
-import { SortDirection } from '@project/core';
+import { SortBy, SortDirection } from '@project/core';
 
 export const MAX_TAG_COUNT = 8;
 export const MIN_TAG_LENGTH = 3;
@@ -6,6 +6,7 @@ export const MAX_TAG_LENGTH = 10;
 
 export const DEFAULT_POST_COUNT_LIMIT = 25;
 export const DEFAULT_PAGE_COUNT = 1;
+export const DEFAULT_SORT_BY = SortBy.CreatedAt;
 export const DEFAULT_SORT_DIRECTION = SortDirection.Desc;
 
 export const PostErrorMessage = {

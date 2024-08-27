@@ -1,3 +1,14 @@
+# Create a new user
+POST http://localhost:3000/api/users/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "user16@notfound.local",
+  "name": "Keks",
+  "password": "123456"
+}
+
+###
 # Login user by email and password
 POST http://localhost:3000/api/users/login HTTP/1.1
 Content-Type: application/json
@@ -11,7 +22,22 @@ Content-Type: application/json
 
 # Get new JWT pair
 POST http://localhost:3000/api/users/refresh HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmNiNWNjMDllZjJhYWQzODUzNDI3ODAiLCJlbWFpbCI6InVzZXJAbm90Zm91bmQubG9jYWwiLCJuYW1lIjoiS2VrcyIsInRva2VuSWQiOiJlYzg5OGI4ZS04MmM2LTQxNTYtOGYxNC1jOWZlY2Y0MWYyNDciLCJpYXQiOjE3MjQ2ODY0MDAsImV4cCI6MTcyNzI3ODQwMH0.uyvNBlZsnONCMNikpDt32HTdd2HV58LC1V3a6aR2GAE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmNiNWNjMDllZjJhYWQzODUzNDI3ODAiLCJlbWFpbCI6InVzZXJAbm90Zm91bmQubG9jYWwiLCJuYW1lIjoiS2VrcyIsInRva2VuSWQiOiJhYzU2ZDhhNS04MWQ4LTQzZjEtOGFlYy05Zjk5ZWYyN2ZiYzAiLCJpYXQiOjE3MjQ3MTExNTIsImV4cCI6MTcyNzMwMzE1Mn0.pdZB47bvsYG6OLXG7k7XuN0wSg1sdYftunxhLQfiYy4
 
 ###
+# Create post
+POST http://localhost:3000/api/blogs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NmNiNWNjMDllZjJhYWQzODUzNDI3ODAiLCJlbWFpbCI6InVzZXJAbm90Zm91bmQubG9jYWwiLCJuYW1lIjoiS2VrcyIsImlhdCI6MTcyNDY5NTExNCwiZXhwIjoxNzI0Njk1NDE0fQ.dTBWGTJSqrIqHkDglNx7o_LSaf3LX_cFurDxDp6gwGE
+Content-Type: application/json
 
+{
+  "isDraft": true,
+  "type": "LINK",
+  "tags": ["test"],
+  "linkPost": {
+    "description": "test link",
+    "link": "https://vk.ru/video-220060683_456241083"
+  }
+}
+
+###

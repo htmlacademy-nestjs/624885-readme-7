@@ -14,7 +14,8 @@ export class VideoPostService {
   public async create(dto: CreateVideoPostDto, postId: string) {
     const entity = this.factory.create({
       ...dto,
-      postId
+      postId,
+      id: ''
     })
     return this.repository.save(entity);
   }

@@ -16,6 +16,7 @@ export { PhotoPost } from './lib/types/photo-post.interface';
 export { LinkPost } from './lib/types/link-post.interface';
 
 export { PaginationResult } from './lib/types/pagination.interface';
+export { SortBy } from './lib/types/sort-by.interface';
 export { SortDirection } from './lib/types/sort-direction.interface';
 
 export { TokenPayload } from './lib/types/token-payload.interface';

@@ -33,12 +33,12 @@ export class AuthenticationService {
   ) {}
 
   public async register(dto: CreateUserDto): Promise<BlogUserEntity> {
-    const { email, name, password } = dto;
+    const { email, name, password, avatar } = dto;
 
     const blogUser: AuthUser = {
       email,
       name,
-      avatar: '',
+      avatar,
       passwordHash: ''
     }
 

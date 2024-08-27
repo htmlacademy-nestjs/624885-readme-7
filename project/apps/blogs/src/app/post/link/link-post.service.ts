@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { LinkPostRepository } from './link-post.repository';
-import { LinkPostEntity } from './link-post.entity';
 import { CreateLinkPostDto } from './dto/create-link-post.dto';
 import { LinkPostFactory } from './link-post.factory';
 import { UpdateTextPostDto } from '../text/dto/update-text-post.dto';
@@ -15,7 +14,8 @@ export class LinkPostService {
   public async create(dto: CreateLinkPostDto, postId: string) {
     const entity = this.factory.create({
       ...dto,
-      postId
+      postId,
+      id: ''
     })
     return this.repository.save(entity);
   }

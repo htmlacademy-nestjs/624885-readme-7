@@ -29,8 +29,8 @@ export class BlogLikeController {
     description: LikeResponseMessages.LikeCreated
   })
   @Post('/')
-  public async createComment(@Param('postId') postId: string, @Body() dto: AddLikeDto) {
-    const newLike = await this.blogLikeService.addLike(postId, dto.userId);
+  public async addLike(@Param('postId') postId: string, @Body() dto: AddLikeDto) {
+    const newLike = await this.blogLikeService.addLike(postId, dto.authorId);
     return fillDto(LikeRdo, newLike.toPOJO());
   }
 }
