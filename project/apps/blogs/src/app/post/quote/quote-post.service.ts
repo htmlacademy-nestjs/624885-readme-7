@@ -14,7 +14,8 @@ export class QuotePostService {
   public async create(dto: CreateQuotePostDto, postId: string) {
     const entity = this.factory.create({
       ...dto,
-      postId
+      postId,
+      id: ''
     })
     return this.repository.save(entity);
   }

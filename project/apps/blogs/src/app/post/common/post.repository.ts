@@ -1,16 +1,18 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { BasePostgresRepository } from '@project/data-access';
 import { BlogPostEntity } from './post.entity';
-import { PaginationResult, Post } from '@project/core';
+import { PaginationResult, Post, SortBy } from '@project/core';
 import { BlogPostFactory } from './post.factory';
 import { PrismaClientService } from '@project/blogs-models';
 import { BlogPostQuery } from './post.query';
 import { Prisma } from '@prisma/client';
+import { BlogTagService } from '@blogs/tag';
 
 @Injectable()
 export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, Post> {
   constructor(
     entityFactory: BlogPostFactory,
+    private readonly blogTagService: BlogTagService,
     readonly client: PrismaClientService
   ) {
     super(entityFactory, client);
@@ -59,20 +61,25 @@ export class BlogPostRepository extends BasePostgresRepository<BlogPostEntity, P
     const skip = query?.page && query?.limit ? (query.page - 1) * query.limit : undefined;
     const take = query?.limit;
     const where: Prisma.PostWhereInput = {};
-    const orderBy: Prisma.PostOrderByWithRelationInput = {};
-
+    const orderBy: Prisma.PostOrderByWithRelationInput = query.sortBy === SortBy.CreatedAt
+    ?{
+      [query.sortBy]: query.sortDirection
+    }
+    :{
+      [query.sortBy]: {
+        _count: query.sortDirection
+      }
+    };
     if(query?.tags) {
+      const tagsEntities = await this.blogTagService.getTagsByTitles(query.tags);
+      const tags = tagsEntities.map(item => item.id)
       where.tags = {
         some: {
           id: {
-            in: query.tags
+            in: tags
           }
         }
       }
-    }
-
-    if(query?.sortDirection) {
-      orderBy.createdAt = query.sortDirection;
     }
 
     const [records, postCount] = await Promise.all([

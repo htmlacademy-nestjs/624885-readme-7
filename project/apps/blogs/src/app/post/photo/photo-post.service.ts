@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PhotoPostRepository } from './photo-post.repository';
-import { PhotoPostEntity } from './photo-post.entity';
 import { CreatePhotoPostDto } from './dto/create-photo-post.dto';
 import { PhotoPostFactory } from './photo-post.factory';
 import { UpdatePhotoPostDto } from './dto/update-photo-post.dto';
@@ -15,7 +14,8 @@ export class PhotoPostService {
   public async create(dto: CreatePhotoPostDto, postId: string) {
     const entity = this.factory.create({
       ...dto,
-      postId
+      postId,
+      id: ''
     })
     return this.repository.save(entity);
   }

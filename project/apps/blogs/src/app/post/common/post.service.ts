@@ -51,27 +51,22 @@ export class BlogPostService {
 
     switch(dto.type) {
       case 'VIDEO': {
-        console.log('videoPost');
         await this.videoPostService.create(dto.videoPost, createdPost.id);
         break;
       };
       case 'TEXT': {
-        console.log('textPost');
         await this.textPostService.create(dto.textPost, createdPost.id);
         break;
       }
       case 'QUOTE': {
-        console.log('quotePost');
         await this.quotePostService.create(dto.quotePost, createdPost.id);
         break;
       }
       case 'PHOTO': {
-        console.log('photoPost');
         await this.photoPostService.create(dto.photoPost, createdPost.id);
         break;
       }
       case 'LINK': {
-        console.log('linkPost');
         await this.linkPostService.create(dto.linkPost, createdPost.id);
         break;
       }
@@ -131,5 +126,17 @@ export class BlogPostService {
     await this.blogPostRepository.update(post);
 
     return post;
+  }
+
+  public async repostPost(postId: string, userId: string) {
+    const originalPost = await this.blogPostRepository.findById(postId);
+    const repostedPost =
+    {
+      ...originalPost,
+      authorId: userId,
+      repostFrom: originalPost.id,
+      tags: originalPost.tags.map((item) => item.title)
+    };
+    return this.createPost(repostedPost);
   }
 }

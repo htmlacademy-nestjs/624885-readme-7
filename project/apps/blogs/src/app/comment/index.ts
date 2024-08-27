@@ -6,3 +6,4 @@ export { BlogCommentRepository } from './comment.repository';
 export { BlogCommentService } from './comment.service';
 export { CreateCommentDto } from './dto/create-comment.dto';
 export { CommentRdo } from './rdo/comment.rdo';
+export * from './comment.constant';

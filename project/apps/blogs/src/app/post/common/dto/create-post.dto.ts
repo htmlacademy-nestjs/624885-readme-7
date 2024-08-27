@@ -41,6 +41,7 @@ export class CreatePostDto {
   public type: PostType;
 
   @IsArray()
+  @IsOptional()
   @ArrayMaxSize(MAX_TAG_COUNT, {message: PostErrorMessage.TagCount})
   @IsString({each: true})
   @Length(MIN_TAG_LENGTH, MAX_TAG_LENGTH, {each: true, message: PostErrorMessage.TagLength})

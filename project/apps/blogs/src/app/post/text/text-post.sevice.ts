@@ -14,7 +14,8 @@ export class TextPostService {
   public async create(dto: CreateTextPostDto, postId: string) {
     const entity = this.factory.create({
       ...dto,
-      postId
+      postId,
+      id: ''
     })
     return this.repository.save(entity);
   }

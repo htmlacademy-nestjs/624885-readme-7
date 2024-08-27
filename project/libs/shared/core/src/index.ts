@@ -16,10 +16,13 @@ export { PhotoPost } from './lib/types/photo-post.interface';
 export { LinkPost } from './lib/types/link-post.interface';
 
 export { PaginationResult } from './lib/types/pagination.interface';
+export { SortBy } from './lib/types/sort-by.interface';
 export { SortDirection } from './lib/types/sort-direction.interface';
 
 export { TokenPayload } from './lib/types/token-payload.interface';
 export { Token } from './lib/types/token.interface';
+export { JwtToken } from './lib/types/jwt-token.interface';
+export { RefreshTokenPayload } from './lib/types/refresh-token-payload.interface';
 
 export { File } from './lib/types/file.interface';
 export { } from './lib/types/stored-file.interface';

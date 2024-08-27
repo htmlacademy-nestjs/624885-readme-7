@@ -57,6 +57,12 @@ export class BlogPostController {
     return fillDto(PostRdo, newPost.toPOJO());
   }
 
+  @Post(':id/repost')
+  public async repost(@Param('id') id: string, @Body() body) {
+    const newRepost = await this.blogPostService.repostPost(id, body.authorId);
+    return fillDto(PostRdo, newRepost.toPOJO());
+  }
+
   @ApiResponse({
     status: HttpStatus.OK,
     description: PostResponseMessage.PostUpdated

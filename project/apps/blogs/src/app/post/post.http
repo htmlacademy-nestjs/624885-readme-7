@@ -11,20 +11,28 @@ GET http://localhost:3000/api/posts?sortDirection=asc
 ###
 
 # Create post
-POST http://localhost:3000/api/posts
+POST http://localhost:3001/api/posts
 Content-Type: application/json
 
 {
-  "authorId": "66bb4569d589a96532f9715c",
-  "isDraft": true,
-  "type": "LINK",
-  "tags": ["test"],
-  "linkPost": {
-    "description": "test link",
-    "link": "https://vk.ru/video-220060683_456241083"
-  }
+  "isDraft": false,
+  "type": "PHOTO",
+  "authorId": "66cb5cc09ef2aad385342780",
+  "photoPost": {
+  	"photo": "2024/08/e7dc3057-4941-44ba-8527-8ec9d5b8a163.jpeg"
+   }
 }
 
 ###
 # Delete post
 DELETE  http://localhost:3000/api/posts/f186858e-99c8-4a62-a6ea-657a99a710f1
+###
+# Update post
+PATCH  http://localhost:3001/api/posts/b98d0740-7a3d-46b9-be62-cb1b3a3038d8
+Content-Type: application/json
+
+{
+  "isDraft": "false"
+}
+
+###
