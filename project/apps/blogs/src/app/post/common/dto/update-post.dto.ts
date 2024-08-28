@@ -1,5 +1,5 @@
 import { ArrayMaxSize, IsArray, IsBoolean, IsEnum, IsMongoId, IsOptional, IsString, Length, ValidateNested } from 'class-validator';
-import { MAX_TAG_COUNT, MAX_TAG_LENGTH, MIN_TAG_LENGTH, PostErrorMessage } from '../post.constant';
+import { PostErrorMessage, Tag } from '../post.constant';
 import { PostType } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
@@ -44,9 +44,9 @@ export class UpdatePostDto {
   public type?: PostType;
 
   @IsArray()
-  @ArrayMaxSize(MAX_TAG_COUNT, {message: PostErrorMessage.TagCount})
+  @ArrayMaxSize(Tag.MaxCount, {message: PostErrorMessage.TagCount})
   @IsString({each: true})
-  @Length(MIN_TAG_LENGTH, MAX_TAG_LENGTH, {each: true, message: PostErrorMessage.TagLength})
+  @Length(Tag.MinLength, Tag.MinLength, {each: true, message: PostErrorMessage.TagLength})
   @IsOptional()
   public tags: string[];
 

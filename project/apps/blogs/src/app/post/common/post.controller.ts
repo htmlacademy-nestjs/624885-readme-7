@@ -38,11 +38,8 @@ export class BlogPostController {
   })
   @Get('/')
   public async index(@Query() query: BlogPostQuery) {
-    const postsWithPagination = await this.blogPostService.getAllPosts(query);
-    const result = {
-      ...postsWithPagination,
-      entities: postsWithPagination.entities.map((post) => post.toPOJO())
-    }
+    const result = await this.blogPostService.getAllPosts(query);
+
     return fillDto(BlogPostWithPaginationRdo, result);
   }
 

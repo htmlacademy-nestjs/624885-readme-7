@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
-import { TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, ANNOUNCE_MIN_LENGTH, ANNOUNCE_MAX_LENGTH, TEXT_MIN_LENGTH, TEXT_MAX_LENGTH } from '@blogs/post';
+import { Title, Announce, Text } from '@blogs/post';
 
 export class UpdateTextPostDto {
   @ApiProperty({
@@ -8,8 +8,8 @@ export class UpdateTextPostDto {
     example: 'This is my text'
   })
   @IsString()
-  @MinLength(TITLE_MIN_LENGTH)
-  @MaxLength(TITLE_MAX_LENGTH)
+  @MinLength(Title.MinLength)
+  @MaxLength(Title.MaxLength)
   @IsOptional()
   public title: string;
 
@@ -18,8 +18,8 @@ export class UpdateTextPostDto {
     example: 'Far far away, behind the word mountains, far from the countries.'
   })
   @IsString()
-  @MinLength(ANNOUNCE_MIN_LENGTH)
-  @MaxLength(ANNOUNCE_MAX_LENGTH)
+  @MinLength(Announce.MinLength)
+  @MaxLength(Announce.MaxLength)
   @IsOptional()
   public announce: string;
 
@@ -28,8 +28,8 @@ export class UpdateTextPostDto {
     example: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind.'
   })
   @IsString()
-  @MinLength(TEXT_MIN_LENGTH)
-  @MaxLength(TEXT_MAX_LENGTH)
+  @MinLength(Text.MinLength)
+  @MaxLength(Text.MaxLength)
   @IsOptional()
   public text: string;
 }

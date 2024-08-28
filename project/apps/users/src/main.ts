@@ -1,20 +1,16 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ConfigService } from '@nestjs/config';
+
+const GLOBAL_PREFIX = 'api';
+const SERVICE_PREFIX = 'notifications';
+const PORT = process.env.PORT || 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  const servicePrefix = 'users'
-  app.setGlobalPrefix(globalPrefix);
+  app.setGlobalPrefix(GLOBAL_PREFIX);
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('User microservice')
@@ -28,11 +24,9 @@ async function bootstrap() {
     transform: true
   }))
 
-  const configService = app.get(ConfigService);
-  const port = configService.get('application.port');
-  await app.listen(port);
+  await app.listen(PORT);
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}/${servicePrefix}`
+    `🚀 Application is running on: http://localhost:${PORT}/${GLOBAL_PREFIX}/${SERVICE_PREFIX}`
   );
 }
 

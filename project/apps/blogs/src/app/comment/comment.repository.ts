@@ -45,10 +45,6 @@ export class BlogCommentRepository extends BasePostgresRepository<BlogCommentEnt
       where: { postId }
     });
 
-    // if(!document) {
-    //   throw new NotFoundException(`Comment with postId: ${postId} not found.`);
-    // }
-
     return records.map(record => this.createEntityDocument(record));
   }
 }
