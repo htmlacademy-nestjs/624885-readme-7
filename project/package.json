@@ -7,7 +7,8 @@
     "mongo:start": "docker compose --file ./apps/users/docker-compose.dev.yml --project-name readme-users --env-file ./apps/users/.env up -d",
     "postgres:start": "docker compose --file ./apps/blogs/docker-compose.dev.yml --env-file ./apps/blogs/.env --project-name readme-blogs up -d",
     "files:mongo:start": "docker compose --file ./apps/files/files.compose.dev.yml --project-name readme-files --env-file ./apps/files/.env up -d",
-    "notifications:start": "docker compose --file ./apps/notifications/notifications.compose.dev.yml --project-name readme-notifications --env-file ./apps/notifications/.env up -d"
+    "notifications:start": "docker compose --file ./apps/notifications/notifications.compose.dev.yml --project-name readme-notifications --env-file ./apps/notifications/.env up -d",
+    "db:start": "npm run mongo:start && npm run postgres:start && npm run files:mongo:start && npm run notifications:start"
   },
   "private": true,
   "dependencies": {
