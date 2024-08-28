@@ -6,7 +6,6 @@ import { BlogPostRepository } from './post.repository';
 import { Injectable } from '@nestjs/common';
 import { VideoPostService } from '../video/video-post.service';
 import { BlogPostQuery } from './post.query';
-import { PaginationResult } from '@project/core';
 import { TextPostService } from '../text/text-post.sevice';
 import { QuotePostService } from '../quote/quote-post.service';
 import { PhotoPostService } from '../photo/photo-post.service';
@@ -26,8 +25,13 @@ export class BlogPostService {
     private readonly linkPostService: LinkPostService
   ) {}
 
-  public async getAllPosts(query?: BlogPostQuery): Promise<PaginationResult<BlogPostEntity>> {
-    return this.blogPostRepository.find(query);
+  public async getAllPosts(query?: BlogPostQuery) {
+    const postsWithPagination = await this.blogPostRepository.find(query);
+    const result = {
+      ...postsWithPagination,
+      entities: postsWithPagination.entities.map((post) => post.toPOJO())
+    }
+    return result;
   }
 
   public async getPost(id: string): Promise<BlogPostEntity> {

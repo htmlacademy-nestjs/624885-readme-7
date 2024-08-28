@@ -12,7 +12,7 @@ export interface ApplicationConfig {
 }
 
 const validationSchema = Joi.object({
-  port: Joi.number().port().default(DEFAULT_PORT), // Не понятно зачем см. строку 30
+  port: Joi.number().port().default(DEFAULT_PORT),
   environment: Joi.string().valid(...ENVIRONMENTS).required()
 });
 
@@ -26,7 +26,7 @@ function validateConfig(config: ApplicationConfig) {
 
 function getConfig(): ApplicationConfig {
   const config: ApplicationConfig = {
-    environment: process.env.NODE_ENV as Environment, // Не понятно зачем
+    environment: process.env.NODE_ENV as Environment,
     port: parseInt(process.env.PORT || `${DEFAULT_PORT}`, 10)
   };
 

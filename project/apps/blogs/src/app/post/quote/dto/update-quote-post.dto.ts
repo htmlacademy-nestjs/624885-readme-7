@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
-import { QUOTE_AUTHOR_MAX_LENGTH, QUOTE_AUTHOR_MIN_LENGTH, QUOTE_MAX_LENGTH, QUOTE_MIN_LENGTH } from '../../common/post.constant';
+import { Quote, QuoteAuthor } from '../../common/post.constant';
 
 export class UpdateQuotePostDto {
   @ApiProperty({
@@ -8,8 +8,8 @@ export class UpdateQuotePostDto {
     example: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem a'
   })
   @IsString()
-  @MinLength(QUOTE_MIN_LENGTH)
-  @MaxLength(QUOTE_MAX_LENGTH)
+  @MinLength(Quote.MinLength)
+  @MaxLength(Quote.MaxLength)
   @IsOptional()
   public text: string;
 
@@ -18,8 +18,8 @@ export class UpdateQuotePostDto {
     example: 'St.Augustine'
   })
   @IsString()
-  @MinLength(QUOTE_AUTHOR_MIN_LENGTH)
-  @MaxLength(QUOTE_AUTHOR_MAX_LENGTH)
+  @MinLength(QuoteAuthor.MinLength)
+  @MaxLength(QuoteAuthor.MaxLength)
   @IsOptional()
   public author: string;
 }
