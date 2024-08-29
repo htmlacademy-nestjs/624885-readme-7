@@ -8,5 +8,5 @@
     "target": "es2021"
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "../../libs/blogs/posts/src/lib/post.constant.ts", "../../libs/blogs/posts/src/lib/common/post.query.ts", "../../libs/blogs/likes/src/lib/like.constant.ts"]
 }

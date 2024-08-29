@@ -5,12 +5,12 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosExceptionFilter } from './filters/axios-exception.filter';
 import { CheckAuthGuard } from './guards/check-auth.guard';
 import { InjectUserIdInterceptor } from '@project/interceptors';
-import { BlogPostQuery, BlogPostWithPaginationRdo, CreatePostDto, PostRdo, PostResponseMessage, UpdatePostDto } from '@blogs/post';
+import { BlogPostQuery, BlogPostWithPaginationRdo, CreatePostDto, PostRdo, PostResponseMessage, UpdatePostDto } from '@project/posts';
 import { ApplicationServiceURL } from './app.config';
 import { PostType } from '@prisma/client';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { CommentRdo, CommentResponseMessage, CreateCommentDto } from '@blogs/comment';
-import { AddLikeDto, LikeRdo, LikeResponseMessages } from '@blogs/like';
+import { CommentRdo, CommentResponseMessage, CreateCommentDto } from '@project/comments';
+import { AddLikeDto, LikeRdo, LikeResponseMessages } from '@project/likes';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Blogs')

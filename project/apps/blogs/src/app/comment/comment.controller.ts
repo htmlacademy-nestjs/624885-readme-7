@@ -1,10 +1,8 @@
 import { Body, Controller, Get, HttpStatus, Param, Post } from '@nestjs/common';
 import { BlogCommentService } from './comment.service';
 import { fillDto} from '@project/helpers'
-import { CommentRdo } from './rdo/comment.rdo';
-import { CreateCommentDto } from './dto/create-comment.dto';
+import { CommentRdo, CreateCommentDto, CommentResponseMessage } from '@project/comments';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CommentResponseMessage } from './comment.constant';
 
 @ApiTags('comments')
 @Controller('posts/:postId/comments')

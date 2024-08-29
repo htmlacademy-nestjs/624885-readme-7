@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BlogCommentEntity } from './comment.entity';
-import { CreateCommentDto } from './dto/create-comment.dto';
+import { CreateCommentDto } from '@project/comments';
 import { BlogCommentRepository } from './comment.repository';
 import { BlogCommentFactory } from './comment.factory';
 

@@ -4,6 +4,4 @@ export { BlogCommentFactory } from './comment.factory';
 export { BlogCommentModule } from './comment.module';
 export { BlogCommentRepository } from './comment.repository';
 export { BlogCommentService } from './comment.service';
-export { CreateCommentDto } from './dto/create-comment.dto';
-export { CommentRdo } from './rdo/comment.rdo';
-export * from './comment.constant';
+export { CommentRdo } from '../../../../../libs/blogs/comments/src/lib/rdo/comment.rdo';

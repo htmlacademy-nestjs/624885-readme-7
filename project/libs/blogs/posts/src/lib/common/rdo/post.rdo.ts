@@ -1,13 +1,9 @@
 import { PostType } from '@prisma/client';
 import { Expose, Type } from 'class-transformer';
-import { CommentRdo } from '@blogs/comment';
-import { LikeRdo } from '@blogs/like';
-import { TagRdo } from '@blogs/tag';
-import { VideoPostRdo } from '../../video/rdo/video-post.rdo';
-import { QuotePostRdo } from '../../quote/rdo/quote-post.rdo';
-import { TextPostRdo } from '../../text/rdo/text-post.rdo';
-import { PhotoPostRdo } from '../../photo/rdo/photo-post.rdo';
-import { LinkPostRdo } from '../../link/rdo/link-post.rdo';
+import { CommentRdo } from '@project/comments';
+import { LikeRdo } from '@project/likes';
+import { TagRdo } from '@project/tags';
+import { LinkPostRdo, PhotoPostRdo, QuotePostRdo, TextPostRdo, VideoPostRdo } from '@project/posts';
 
 export class PostRdo {
   @Expose()

@@ -1,4 +1,4 @@
-import { Title } from '@blogs/post';
+import { Title } from '@project/posts';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString, IsUrl, MaxLength, MinLength,  } from 'class-validator';
 

@@ -1,16 +1,15 @@
 import { BlogTagService } from '@blogs/tag';
-import { CreatePostDto } from './dto/create-post.dto';
+import { CreatePostDto, UpdatePostDto } from '@project/posts';
 import { BlogPostEntity } from './post.entity';
 import { BlogPostFactory } from './post.factory';
 import { BlogPostRepository } from './post.repository';
 import { Injectable } from '@nestjs/common';
 import { VideoPostService } from '../video/video-post.service';
-import { BlogPostQuery } from './post.query';
+import { BlogPostQuery } from '../../../../../../libs/blogs/posts/src/lib/common/post.query';
 import { TextPostService } from '../text/text-post.sevice';
 import { QuotePostService } from '../quote/quote-post.service';
 import { PhotoPostService } from '../photo/photo-post.service';
 import { LinkPostService } from '../link/link-post.service';
-import { UpdatePostDto } from './dto/update-post.dto';
 
 @Injectable()
 export class BlogPostService {

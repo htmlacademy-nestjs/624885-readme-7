@@ -1,10 +1,10 @@
 import { Body, Controller, Get, HttpStatus, Param, Post } from '@nestjs/common';
 import { BlogLikeService } from './like.service';
 import { fillDto} from '@project/helpers';
-import { LikeRdo } from './rdo/like.rdo';
-import { AddLikeDto } from './dto/add-like.dto';
+import { LikeRdo } from '../../../../../libs/blogs/likes/src/lib/rdo/like.rdo';
+import { AddLikeDto } from '../../../../../libs/blogs/likes/src/lib/dto/add-like.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { LikeResponseMessages } from './like.constant';
+import { LikeResponseMessages } from '../../../../../libs/blogs/likes/src/lib/like.constant';
 
 @ApiTags('likes')
 @Controller('posts/:postId/likes')

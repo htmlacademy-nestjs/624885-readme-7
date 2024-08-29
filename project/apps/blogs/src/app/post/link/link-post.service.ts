@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { LinkPostRepository } from './link-post.repository';
-import { CreateLinkPostDto } from './dto/create-link-post.dto';
+import { CreateLinkPostDto, UpdateLinkPostDto } from '@project/posts';
 import { LinkPostFactory } from './link-post.factory';
-import { UpdateTextPostDto } from '../text/dto/update-text-post.dto';
 
 @Injectable()
 export class LinkPostService {
@@ -24,7 +23,7 @@ export class LinkPostService {
     return this.repository.findById(id);
   }
 
-  public async update(dto: UpdateTextPostDto, postId: string) {
+  public async update(dto: UpdateLinkPostDto, postId: string) {
     const entity = await this.repository.findByPostId(postId);
     for(const [key, value] of Object.entries(dto)) {
       if( value !== undefined ) {

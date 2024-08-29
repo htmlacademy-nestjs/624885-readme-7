@@ -4,7 +4,7 @@ import { BlogPostEntity } from './post.entity';
 import { PaginationResult, Post, SortBy } from '@project/core';
 import { BlogPostFactory } from './post.factory';
 import { PrismaClientService } from '@project/blogs-models';
-import { BlogPostQuery } from './post.query';
+import { BlogPostQuery } from '../../../../../../libs/blogs/posts/src/lib/common/post.query';
 import { Prisma } from '@prisma/client';
 import { BlogTagService } from '@blogs/tag';
 
