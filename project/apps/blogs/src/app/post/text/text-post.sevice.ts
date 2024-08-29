@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { TextPostRepository } from './text-post.repository';
-import { CreateTextPostDto } from './dto/create-text-post.dto';
+import { CreateTextPostDto, UpdateTextPostDto } from '@project/posts';
 import { TextPostFactory } from './text-post.factory';
-import { UpdateTextPostDto } from './dto/update-text-post.dto';
 
 @Injectable()
 export class TextPostService {

@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, MaxLength, MinLength } from 'class-validator';
-import { Title, Announce, Text } from '@blogs/post';
+import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+import { Title, Announce, Text } from '../../common/post.constant';
 
-export class CreateTextPostDto {
+export class UpdateTextPostDto {
   @ApiProperty({
     description: 'Text post title',
     example: 'This is my text'
@@ -10,6 +10,7 @@ export class CreateTextPostDto {
   @IsString()
   @MinLength(Title.MinLength)
   @MaxLength(Title.MaxLength)
+  @IsOptional()
   public title: string;
 
   @ApiProperty({
@@ -19,6 +20,7 @@ export class CreateTextPostDto {
   @IsString()
   @MinLength(Announce.MinLength)
   @MaxLength(Announce.MaxLength)
+  @IsOptional()
   public announce: string;
 
   @ApiProperty({
@@ -28,5 +30,6 @@ export class CreateTextPostDto {
   @IsString()
   @MinLength(Text.MinLength)
   @MaxLength(Text.MaxLength)
+  @IsOptional()
   public text: string;
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PhotoPostRepository } from './photo-post.repository';
-import { CreatePhotoPostDto } from './dto/create-photo-post.dto';
+import { CreatePhotoPostDto, UpdatePhotoPostDto } from '@project/posts';
 import { PhotoPostFactory } from './photo-post.factory';
-import { UpdatePhotoPostDto } from './dto/update-photo-post.dto';
 
 @Injectable()
 export class PhotoPostService {

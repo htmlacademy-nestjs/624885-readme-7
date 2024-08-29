@@ -1,13 +1,15 @@
 import { Body, Controller, Delete, Get, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { BlogPostService } from './post.service';
 import { fillDto } from '@project/helpers';
-import { PostRdo } from './rdo/post.rdo';
-import { CreatePostDto } from './dto/create-post.dto';
+import {
+  BlogPostQuery,
+  BlogPostWithPaginationRdo,
+  CreatePostDto,
+  PostRdo,
+  PostResponseMessage,
+  UpdatePostDto
+} from '@project/posts';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PostResponseMessage } from './post.constant';
-import { BlogPostWithPaginationRdo } from './rdo/post-with-pagination.rdo';
-import { BlogPostQuery } from './post.query';
-import { UpdatePostDto } from './dto/update-post.dto';
 
 @ApiTags('posts')
 @Controller('posts')
